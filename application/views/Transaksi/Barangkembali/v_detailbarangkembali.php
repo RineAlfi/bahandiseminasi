@@ -43,6 +43,10 @@
                                     <th>Keterangan</th>
                                     <td><?php echo $detaildata->keterangan?></td>
                                 </tr>
+                                <tr>
+                                    <th>File</th>
+                                    <td><a class="btn btn-sm btn-outline-primary btn-icon-text" href="<?php echo base_url() ?>assets/file/Barangkembali/<?php echo $detaildata->dokumenkembali ?>"><i class="ti ti-download"></i> <?php echo $detaildata->dokumenkembali?></a></td>
+                                </tr>
                             </table>
                             <a href="<?php echo base_url() ?>barangkembali" class="btn btn-warning float-right" >Kembali</a>
                             </div>
