@@ -17,11 +17,6 @@
                         <input type="date" name="tanggal_keluar" value="<?php echo set_value('tanggal_keluar', $barangkembali->tanggal_keluar); ?>" name="tanggal_keluar" type="text" class="form-control" required>
                         <?php echo form_error('tanggal_keluar', '<div class="text-small text-danger"></div>')?>
                     </div>
-                    <!-- <div class="form-group">
-                        <label><b>Nama Barang</b></label>
-                        <input value="<//?php echo set_value('barang', $barangkembali['barang_id']); ?>" name="nama_barang" id="barang" type="text" class="form-control" required>
-                        <//?php echo form_error('nama_barang', '<div class="text-small text-danger"></div>')?>
-                    </div> -->
                     <div class="form-group">
                         <label><b>Nama Barang</b></label>
                         <select name="barang_id" id="barang_id" class="form-control" required>
