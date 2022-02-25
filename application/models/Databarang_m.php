@@ -45,22 +45,23 @@ class Databarang_m extends CI_model
         return $this->db->get_where('barang b', ['id_barang' => $id])->row_array();
     }
 
-    // public function get_data_barang_bybarang_id($id_barang)
+    // public function get_data_barang_bybarangid($barang_id)
     // {
     //     $hsl=$this->db->select('*');
     //     $this->db->from('barang');
-    //     $this->db->join('satuan', 'satuan.id = barang.satuan_id');
+    //     $this->db->join('barang_masuk', 'barang.id_barang = barang_masuk.barang_id');
     //     // $this->db->join('barang_masuk', 'barang_masuk.barang_id = barang.id_barang');
-    //     return $hsl=$this->db->where('id_barang', $id_barang)->get()->row();
+    //     return $hsl=$this->db->where('barang_id', $barang_id)->get()->row();
     //     if($hsl->num_rows()>0){
     //     foreach ($hsl->result() as $data) {
     //         $hasil=array(
     //             // 'barang_id' => $data->barang_id,
     //             'stok' => $data->stok,
-    //             'satuan' => $data->satuan,
+    //             // 'satuan' => $data->satuan,
     //             );
 	// 		}
 	// 	}
 	// 	return $hasil;
 	// }
+
 } 

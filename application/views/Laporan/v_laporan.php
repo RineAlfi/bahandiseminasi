@@ -34,11 +34,15 @@
                                         Barang Kembali
                                         </label>
                                     </div>
-                                    <div class="form-group">
-                                    <label><b>Tanggal keluar</b></label>
+                                    <div class="form-group"><br>
+                                    <label><b>Tanggal</b></label>
                                         <input value="<?= set_value('tanggal'); ?>" name="tanggal" id="tanggal" type="date" name="tanggal_keluar" class="form-control">
                                         <?php echo form_error('tanggal_keluar', '<div class="text-small text-danger"></div>') ?>
                                     </div>
+                                    <button type="button" class="btn btn-outline-primary btn-icon-text">
+                                        Cetak
+                                        <i class="ti ti-printer"></i>                                                                              
+                                    </button>
                                 </div>
                                 </div>
                             </div>

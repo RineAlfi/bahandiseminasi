@@ -14,12 +14,12 @@
                     </div>
                     <div class="form-group">
                         <label><b>Tanggal Keluar</b></label>
-                        <input type="date" name="tanggal_keluar" value="<?php echo set_value('tanggal_keluar', $barangkembali->tanggal_keluar); ?>" name="tanggal_keluar" type="text" class="form-control" required>
+                        <input type="date" name="tanggal_keluar" value="<?php echo set_value('tanggal_keluar', $barangkembali->tanggal_keluar); ?>" name="tanggal_keluar" type="text" class="form-control" readonly required>
                         <?php echo form_error('tanggal_keluar', '<div class="text-small text-danger"></div>')?>
                     </div>
                     <div class="form-group">
                         <label><b>Nama Barang</b></label>
-                        <select name="barang_id" id="barang_id" class="form-control" required>
+                        <select name="barang_id" id="barang_id" class="form-control" disabled required>
                             <option value="" selected disabled>--Pilih Nama Barang--</optiion>
                             <?php foreach($barang as $db) : ?>
                                 <option <?php echo $barangkembali->barang_id == $db['id_barang'] ? 'selected' : '';?> <?php echo set_select('barang_id', $db['id_barang']) ?> value="<?php echo $db['id_barang'] ?>"><?php echo $db['nama_barang'] ?></option> 

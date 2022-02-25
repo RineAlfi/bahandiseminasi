@@ -53,8 +53,8 @@
 
 
 
-<script type="text/javascript">
-        let hal = '<?= $this->uri->segment(1); ?>';
+<!-- <script type="text/javascript">
+        let hal = '</?= $this->uri->segment(1); ?>';
 
         let satuan = $('#satuan');
         let stok = $('#stok');
@@ -62,7 +62,7 @@
         let jumlah = hal == 'barangmasuk' ? $('#jumlah_masuk') : $('#jumlah_keluar');
 
         $(document).on('change', '#barang_id', function() {
-            let url = '<?= base_url('barang/getstok/'); ?>' + this.value;
+            let url = '</?= base_url('barang/getstok/'); ?>' + this.value;
             $.getJSON(url, function(data) {
                 satuan.html(data.nama_satuan);
                 stok.val(data.stok);
@@ -80,8 +80,8 @@
             let totalStok = parseInt(stok.val()) - parseInt(this.value);
             total.val(Number(totalStok));
         });
-</script>
-<script type="text/javascript">
+</script> -->
+<!-- <script type="text/javascript">
         $(function() {
             $('.date').datepicker({
                 uiLibrary: 'bootstrap4',
@@ -112,9 +112,30 @@
 
             cb(start, end);
         });
+</script> -->
+
+<script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>assets/js/DataTables/datatables.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+    });
 </script>
 
-<script>
+<!-- <script>
+    $('#datatable').DataTable(
+        dom: 'Bfrtip',
+        buttons: [{
+            extends: 'copy',
+            oriented: 'potrait',
+            download: 'open',
+            widthX: '90px'
+        },
+        'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+</script> -->
+    
+<!-- <script>
     $(document).ready(function () {
     $('#dtBasicExample').DataTable();
     $('.dataTables_length').addClass('bs-select');
@@ -125,7 +146,7 @@
     //     ]
     //  );
 });
-</script>
+</script> -->
 
 </body>
 

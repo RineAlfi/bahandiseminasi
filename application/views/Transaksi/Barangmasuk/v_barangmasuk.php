@@ -14,7 +14,7 @@
                             <div class="card">
                                 <!-- <div class="card-body"> -->
                                 <div class="table-responsive pt-3 ">
-                                <table id="dtBasicExample" class="table table-striped table-bordered table-md" cellspacing="0" height='50%'>
+                                <table id="datatable" class="table table-striped table-bordered table-md" cellspacing="0" height='50%'>
                                     <thead  class="thead-light">
                                         <tr>
                                         <th width='5px'>No</th>
@@ -58,3 +58,30 @@
     </div>                   
 </div>
 </div>
+
+<!-- <script>
+    $(document).ready(function(){
+            $('#barang_id').on('input',function(){
+            
+            var barang_id=$(this).val();
+            $.ajax({
+                type : "POST",
+                url  : "</?php echo base_url('barang/get_barang')?>",
+                dataType : "JSON",
+                data : {barang_id: barang_id},
+                cache:false,
+                success: function(data){
+                    $.each(data,function(barang_id, stok){
+                        $('[name="stok"]').val(data.stok);
+                        // $('[name="harga"]').val(data.harga);
+                        // $('[name="satuan"]').val(data.satuan);
+                        
+                    });
+                    
+                }
+            });
+            return false;
+        });
+
+    });
+	</script> -->

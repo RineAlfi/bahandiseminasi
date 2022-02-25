@@ -14,7 +14,7 @@
                             <div class="card">
                                 <!-- <div class="card-body"> -->
                                 <div class="table-responsive pt-3 ">
-                                <table id="dtBasicExample" class="table table-striped table-bordered table-md" cellspacing="0" height='50%'>
+                                <table id="datatable" class="table table-striped table-bordered table-md" cellspacing="0" height='50%'>
                                     <thead  class="thead-light">
                                         <tr>
                                         <th width='5px'>No</th>

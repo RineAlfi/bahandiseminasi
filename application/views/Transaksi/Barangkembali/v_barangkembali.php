@@ -14,7 +14,7 @@
                                 <!-- <div class="card-body"> -->
                                 <div class="table-responsive pt-3 ">
                                 <?php echo $this->session->flashdata('message'); ?>
-                                <table id="dtBasicExample" class="table table-striped table-bordered table-md" cellspacing="0" height='50%'>
+                                <table id="datatable" class="table table-striped table-bordered table-md" cellspacing="0" height='50%'>
                                     <thead  class="thead-light">
                                         <tr>
                                         <th width='5px'>No</th>
