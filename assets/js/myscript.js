@@ -127,3 +127,24 @@ $(document).on('click', '#hapuskembali', function (e) {
         }
     })
 })
+
+$(document).on('click', '#hapuskeluar', function (e) {
+
+    e.preventDefault();
+    var href = $(this).attr('href')
+
+    Swal.fire({
+        title: 'Apakah Anda Yakin?',
+        text: "Hapus Data Barang Keluar",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Hapus data'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location = href;
+        }
+    })
+})
+

@@ -51,12 +51,12 @@
                     </div>
                     <div class="form-group">
                         <label><b>Foto Produk</b></label>
-                        <input type="file" class="form-control form-control-lg" id="foto" name="foto">
+                        <input type="file" class="form-control form-control-lg" id="fotokembali" name="fotokembali">
                         <?php echo form_error('foto', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="form-group">
                         <label><b>Dokumen</b></label>
-                        <input type="file" class="form-control form-control-lg" id="dokumen" name="dokumen" multiple>
+                        <input type="file" class="form-control form-control-lg" id="dokumenkembali" name="dokumenkembali" multiple>
                         <?php echo form_error('dokumen', '<small class="text-danger">', '</small>'); ?>
                     </div>
 

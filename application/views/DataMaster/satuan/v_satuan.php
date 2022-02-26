@@ -32,7 +32,7 @@
                                             <td><?php echo $j->nama_satuan ?></td>
                                         <td>
                                             <a class="btn btn-sm btn-success" href="<?php echo base_url('/satuan/edit/' . $j->id) ?>"><i class="ti ti-pencil"></i></a>
-                                            <a onclick="return confirm('Yakin hapus data ini?')" id="hapussatuan" class="btn btn-sm btn-danger" href="<?php echo site_url('/satuan/hapus/' . $j->id) ?>"><i class="ti ti-trash"></i></a>
+                                            <a id="hapussatuan" class="btn btn-sm btn-danger" href="<?php echo site_url('/satuan/hapus/' . $j->id) ?>"><i class="ti ti-trash"></i></a>
                                         </td>
                                         </tr>
                                         <?php } ?>

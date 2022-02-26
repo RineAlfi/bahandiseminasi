@@ -207,4 +207,5 @@ class Barangkeluar extends CI_Controller {
         $this->session->set_flashdata('sukses', 'Data Barang Keluar Berhasil Dihapus');
 		redirect('barangkeluar');
 	}
+
 }

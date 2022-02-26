@@ -40,7 +40,7 @@
                                                     <td><?php echo $b['nama_satuan'] ?></td>
                                                     <td>
                                                         <a class="btn btn-sm btn-success" href="<?php echo base_url('/barang/edit/' . $b['id_barang']) ?>"><i class="ti ti-pencil"></i></a>
-                                                        <a onclick="return confirm('Yakin hapus data ini?')" id="hapusbarang" class="btn btn-sm btn-danger" href="<?php echo site_url('/barang/hapus/' . $b['id_barang']) ?>"><i class="ti ti-trash"></i></a>
+                                                        <a id="hapusbarang" class="btn btn-sm btn-danger" href="<?php echo site_url('/barang/hapus/' . $b['id_barang']) ?>"><i class="ti ti-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>

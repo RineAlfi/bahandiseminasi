@@ -43,7 +43,7 @@
                                             <td>
                                                 <a class="btn btn-sm btn-warning" href="<?php echo base_url('/barangmasuk/detail/' . $bm['id_barangmasuk']) ?>"><i class="ti ti-eye"></i></a>
                                                 <a class="btn btn-sm btn-success" href="<?php echo base_url('/barangmasuk/edit/' . $bm['id_barangmasuk']) ?>"><i class="ti ti-pencil"></i></a>
-                                                <a onclick="return confirm('Yakin hapus data ini?')" id="hapusmasuk" class="btn btn-sm btn-danger" href="<?php echo site_url('/barangmasuk/hapus/' . $bm['id_barangmasuk']) ?>"><i class="ti ti-trash"></i></a>
+                                                <a id="hapusmasuk" class="btn btn-sm btn-danger" href="<?php echo site_url('/barangmasuk/hapus/' . $bm['id_barangmasuk']) ?>"><i class="ti ti-trash"></i></a>
                                             </td>
                                             </tr>
                                         <?php } ?>

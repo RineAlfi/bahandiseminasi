@@ -28,14 +28,20 @@ class Barangkembali extends CI_Controller {
         $ket1 = 'barang.id_barang = barang_keluar.barang_id';
         $ket2 = 'barang_keluar.id_barangkeluar';
         $barang = $this->Barangkembali_m->join2('barang_keluar', 'barang', $ket1, $ket2, $id_barangkeluar);
-        // $data['barang'] = $barang;
-        // $stokbarang = $barang->stok;
-        // var_dump($stokbarang);
+        $stokbarang = $barang->jumlah_keluar;
+        $stok_valid = $stokbarang + 1;
         
         $this->form_validation->set_rules('tanggal_kembali', 'Tanggal', 'required');
         $this->form_validation->set_rules('jumlah_kembali', 'Jumlah Kembali', 'required');
+        $this->form_validation->set_rules(
+            'jumlah_kembali',
+            'Jumlah Kembali',
+            "required|trim|numeric|greater_than[0]|less_than[{$stok_valid}]",
+            [
+                'less_than' => "Jumlah Kembali tidak boleh lebih dari {$stokbarang}"
+            ]
+        );
         
-
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Tambah Data Barang Kembali | Bahan Diseminasi';
             $this->load->view('template/template', $data);
@@ -43,13 +49,13 @@ class Barangkembali extends CI_Controller {
             $this->load->view('template/footer', $data);
 
         } else {
-            $foto = $_FILES['foto']['name'];
+            $foto = $_FILES['fotokembali']['name'];
             if ($foto) {
                 $config['upload_path'] = './assets/file/barangkembali';
                 $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
                 $config['max_size']     = '3000';
                 $this->load->library('upload', $config);
-                if ($this->upload->do_upload('foto')) {
+                if ($this->upload->do_upload('fotokembali')) {
                     $foto = $this->upload->data('file_name');
                 } else {
                     echo "Unggah file gagal!";
@@ -57,13 +63,13 @@ class Barangkembali extends CI_Controller {
             } else {
             }
             
-            $dokumen = $_FILES['dokumen']['name'];
+            $dokumen = $_FILES['dokumenkembali']['name'];
             if ($dokumen) {
                 $config['upload_path'] = './assets/file/barangkembali';
                 $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
                 $config['max_size']     = '3000';
                 $this->load->library('upload', $config);
-                if ($this->upload->do_upload('dokumen')) {
+                if ($this->upload->do_upload('dokumenkembali')) {
                     $dokumen = $this->upload->data('file_name');
                 } else {
                     echo "Unggah file gagal!";
@@ -75,12 +81,12 @@ class Barangkembali extends CI_Controller {
                 'tanggal_kembali' => $this->input->post('tanggal_kembali'),
                 'jumlah_kembali' => $this->input->post('jumlah_kembali'),
                 'keterangan' => $this->input->post('keterangankembali'),
-                'foto' => $foto,
-                'dokumen' => $dokumen
+                'fotokembali' => $foto,
+                'dokumenkembali' => $dokumen
             ];
             // var_dump($barang);
             $this->Barangkembali_m->input_data($data, 'barang_kembali');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Data Barang Kembali Ditambahkan </div>');
+            $this->session->set_flashdata('sukses', 'Data Barang Kembali Berhasil Ditambahkan');
             redirect('barangkembali');
         }
     }
@@ -112,14 +118,14 @@ class Barangkembali extends CI_Controller {
         $ket = ['id_barangkembali' => $id_barangkembali];
         $detail = $this->Barangkembali_m->detailupdate('barang_kembali', $ket);
         // // var_dump($detail);
-        $foto = $_FILES['foto']['name'];
+        $foto = $_FILES['fotokembali']['name'];
             if ($foto) {
                 $config['upload_path']   = './assets/file/Barangkembali';
                 $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
                 $config['max_size']      = '3000';
                 $this->load->library('upload', $config);
-                if ($this->upload->do_upload('foto')) {
-                    $foto_lama = $detail->foto;
+                if ($this->upload->do_upload('fotokembali')) {
+                    $foto_lama = $detail->fotokembali;
                     unlink(FCPATH.'/assets/file/Barangkembali/'.$foto_lama);
                     $foto = $this->upload->data('file_name');
                 } else {
@@ -129,14 +135,14 @@ class Barangkembali extends CI_Controller {
                 $foto = $detail->foto;
             }
 
-            $dokumen = $_FILES['dokumen']['name'];
+            $dokumen = $_FILES['dokumenkembali']['name'];
             if ($dokumen) {
                 $config['upload_path']   = './assets/file/Barangkembali';
                 $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
                 $config['max_size']      = '30000';
                 $this->load->library('upload', $config);
-                if ($this->upload->do_upload('dokumen')) {
-                    $dokumen_lama = $detail->dokumen;
+                if ($this->upload->do_upload('dokumenkembali')) {
+                    $dokumen_lama = $detail->dokumenkembali;
                     $dokumen = $this->upload->data('file_name');
                 } else {
                     echo "Unggah file gagal!";
@@ -146,10 +152,10 @@ class Barangkembali extends CI_Controller {
             }
         $data = [
             'tanggal_kembali' => $this->input->post('tanggal_kembali'),
-            'barang_id' => $this->input->post('barang_id'),
+            'barang_idkeluar' => $this->input->post('barang_idkeluar'),
             'jumlah_kembali' => $this->input->post('jumlah_kembali'),
             'keterangan' => $this->input->post('keterangan'),
-            'foto' => $foto,
+            'fotokembali' => $foto,
             'dokumenkembali' => $dokumen
         ];
         // var_dump($data);

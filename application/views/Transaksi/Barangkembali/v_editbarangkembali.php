@@ -28,6 +28,11 @@
                     <?php echo form_error('barang_id', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="form-group">
+                        <label><b>Tanggal Kembali</b></label>
+                        <input type="date" name="tanggal_kembali" class="form-control" required>
+                        <?php echo form_error('tanggal_kembali', '<div class="text-small text-danger"></div>') ?>
+                    </div>
+                    <div class="form-group">
                         <label><b>Jumlah Kembali</b></label>
                         <input type="number" name="jumlah_kembali" value="<?php echo set_value('jumlah_kembali', $barangkembali->jumlah_kembali); ?>" name="jumlah_kembali" class="form-control" required>
                         <?php echo form_error('jumlah_kembali', '<div class="text-small text-danger"></div>')?>
@@ -39,13 +44,13 @@
                     </div>
                     <div class="form-group">
                         <label><b>Foto Produk</b></label>
-                        <input type="file" name="foto" value="<?php echo set_value('foto', $barangkembali->foto); ?>" name="foto" class="form-control">
-                        <?php echo form_error('foto', '<div class="text-small text-danger"></div>')?>
+                        <input type="file" name="fotokembali" value="<?php echo set_value('foto', $barangkembali->foto); ?>" name="fotokembali" class="form-control">
+                        <?php echo form_error('fotokembali', '<div class="text-small text-danger"></div>')?>
                     </div>
                     <div class="form-group">
                         <label><b>File</b></label>
-                        <input type="file" name="dokumen" value="<?php echo set_value('dokumen', $barangkembali->dokumen); ?>" name="dokumen" class="form-control">
-                        <?php echo form_error('dokumen', '<div class="text-small text-danger"></div>')?>
+                        <input type="file" name="dokumenkembali" value="<?php echo set_value('dokumen', $barangkembali->dokumenkembali); ?>" name="dokumenkembali" class="form-control">
+                        <?php echo form_error('dokumenkembali', '<div class="text-small text-danger"></div>')?>
                     </div>
 
                     <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
