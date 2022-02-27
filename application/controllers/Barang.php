@@ -96,12 +96,12 @@ class Barang extends CI_Controller {
 		redirect('barang');
 	}
 
-    // public function getstok($getId)
-    // {
-    //     $id = encode_php_tags($getId);
-    //     $query = $this->Databarang_m->cekStok($id);
-    //     output_json($query);
-    // }
+    public function getstok($getId)
+    {
+        $id = encode_php_tags($getId);
+        $query = $this->Databarang_m->cekStok($id);
+        output_json($query);
+    }
 
     
 }

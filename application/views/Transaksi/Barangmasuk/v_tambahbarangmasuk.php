@@ -68,22 +68,22 @@
         </div>
     </div>
 </div>
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-<!-- <script>
-        $('#id_barang').on('input',function(){
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+        $('#barang_id').on('input',function(){
         
-        var id_barang=$(this).val();
+        var barang_id=$(this).val();
         $.ajax({
             type : "POST",
             url  : "<?php echo base_url('barangmasuk/get_barang')?>",
             dataType : "JSON",
-            data : {id_barang: id_barang},
+            data : {id_barang: barang_id},
             cache:false,
             success: function(data){
                 $.each(data,function(id_barang, stok){
                     // $('[name="nama"]').val(data.nama_barang);
 
-                    $('[name="id_barang"]').val(data.id_barang);
+                    $('[name="barang_id"]').val(data.barang_id);
                     $('[name="stok"]').val(data.stok);
                     // $('[name="satuan"]').val(data.satuan);
                     

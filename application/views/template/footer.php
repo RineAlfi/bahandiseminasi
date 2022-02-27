@@ -18,8 +18,8 @@
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <script src="<?php echo base_url() ?>assets/vendors/chart.js/Chart.min.js"></script>
-<script src="<?php echo base_url() ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-<script src="<?php echo base_url() ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<!-- <script src="</?php echo base_url() ?>assets/vendors/datatables.net/jquery.dataTables.js"></script> -->
+<!-- <script src="</?php echo base_url() ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> -->
 <script src="<?php echo base_url() ?>assets/js/dataTables.select.min.js"></script>
 
 <!-- End plugin js for this page -->
@@ -51,7 +51,40 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script> -->
 
+<script src="<?= base_url(); ?>assets/vendors/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/jszip/jszip.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/pdfmake/pdfmake.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/pdfmake/vfs_fonts.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/buttons/js/buttons.html5.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/buttons/js/buttons.print.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/buttons/js/buttons.colVis.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendors/datatables/responsive/js/responsive.bootstrap4.min.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+            var table = $('#dataTable').DataTable({
+                buttons: ['copy', 'csv', 'print', 'excel', 'pdf'],
+                dom: "<'row px-2 px-md-2 pt-2'<'col-md-3'l><'col-md-5 text-center'B><'col-md-4'f>>" +
+                    "<'row'<'col-md-8'tr>>" +
+                    "<'row px-2 px-md-4 py-3'<'col-md-5'i><'col-md-7'p>>",
+                lengthMenu: [
+                    [25, 50, 100, -1],
+                    [25, 50, 100, "All"]
+                ],
+                columnDefs: [{
+                    targets: -1,
+                    orderable: false,
+                    searchable: false
+                }]
+            });
+
+            table.buttons().container().appendTo('#dataTable_wrapper .col-md-5:eq(0)');
+        });
+</script>
 
 <!-- <script type="text/javascript">
         let hal = '</?= $this->uri->segment(1); ?>';
@@ -114,12 +147,12 @@
         });
 </script> -->
 
-<script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>assets/js/DataTables/datatables.js"></script>
+<!-- <script type="text/javascript" charset="utf8" src="</?php echo base_url() ?>assets/js/DataTables/datatables.js"></script>
 <script>
     $(document).ready(function() {
         $('#datatable').DataTable();
     });
-</script>
+</script> -->
 
 <!-- <script>
     $('#datatable').DataTable(

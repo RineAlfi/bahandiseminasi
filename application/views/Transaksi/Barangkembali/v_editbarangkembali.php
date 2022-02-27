@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label><b>Nama Barang</b></label>
                         <select name="barang_id" id="barang_id" class="form-control" disabled required>
-                            <option value="" selected disabled>--Pilih Nama Barang--</optiion>
+                            <option value="" selected disabled>--Pilih Nama Barang--</option>
                             <?php foreach($barang as $db) : ?>
                                 <option <?php echo $barangkembali->barang_id == $db['id_barang'] ? 'selected' : '';?> <?php echo set_select('barang_id', $db['id_barang']) ?> value="<?php echo $db['id_barang'] ?>"><?php echo $db['nama_barang'] ?></option> 
                             <?php endforeach; ?>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label><b>Tanggal Kembali</b></label>
-                        <input type="date" name="tanggal_kembali" class="form-control" required>
+                        <input type="date" name="tanggal_kembali" value="<?php echo set_value('tanggal_kembali', $barangkembali->tanggal_kembali); ?>" class="form-control" required>
                         <?php echo form_error('tanggal_kembali', '<div class="text-small text-danger"></div>') ?>
                     </div>
                     <div class="form-group">

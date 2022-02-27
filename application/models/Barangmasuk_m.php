@@ -103,5 +103,12 @@ class Barangmasuk_m extends CI_model
         $query = $this->db->get_where($table, $ket)->row();
         return $query;
     }
+
+    // public function getList()
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('barang');
+    //     return $this->db->get()->result();
+    // }
     
 }

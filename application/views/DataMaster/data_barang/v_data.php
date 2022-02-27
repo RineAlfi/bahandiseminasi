@@ -4,10 +4,10 @@
             <div class="col-md-12 grid-margin">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold">Data Barang</h3><br>
+                    <h4 class="m-0 font-weight-bold">Data Barang</h4><br>
                     <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
                     <div class="col-md-4 grid-margin">
-                    <a href="<?php echo base_url() ?>barang/tambah" class="btn btn-success btn-md"><i class="ti ti-plus"></i> Tambah Barang</a></div>
+                    <a href="<?php echo base_url() ?>barang/tambah" class="btn btn-success btn-sm"><i class="ti ti-plus"></i> Tambah Barang</a></div>
                     <div class="col-md-12 grid-margin">
                         <div class="card shadow mb-12">
                             <div class="col-sm-12 grid-margin stretch-card">

@@ -2,11 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Barangmasuk extends CI_Controller {
+    // public $result = [
+    //     'status' => false,
+    //     'data' => [],
+    // ];
 
     public function __construct()
     {
         parent::__construct();
         $this->load->model('Barangmasuk_m');
+        // $this->load->model('Databarang_m');
         $this->load->library('form_validation', 'upload');
     }
     public function index()
@@ -30,6 +35,7 @@ class Barangmasuk extends CI_Controller {
     {
         $barang = $this->Barangmasuk_m->get('barang');
         $data['title'] = 'Tambah Barang Masuk | Bahan Diseminasi';
+        // $data['id_barang'] = $this->Databarang_m->getList();
         // $data['barang'] = $this->Barangmasuk_m->get('barang');
         $data['barang'] = $barang;
         $this->form_validation->set_rules('tanggal_masuk', 'Tanggal', 'required');

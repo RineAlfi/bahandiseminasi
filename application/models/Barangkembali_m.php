@@ -121,7 +121,24 @@ class Barangkembali_m extends CI_model
         return $query->result();
     }
 
-    // function get_all_data()
+    public function update($table, $data, $ket)
+    {
+        $this->db->where($ket);
+        $this->db->update($table, $data);
+    }   
+     
+    public function hapus_data($where,$table)
+    {
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+    public function detailupdate($table, $ket){
+        $query = $this->db->get_where($table, $ket)->row();
+        return $query;
+    }
+
+     // function get_all_data()
     // {
     //     $this->db->select('*');
     //     $this->db->from('barang_kembali');
@@ -142,22 +159,21 @@ class Barangkembali_m extends CI_model
     //     $query = $this->db->get();
     //     return $query->row();
     // }
+    
+    // public function count()
+    // {
+    //     $this->db->select('count(*)');
+    //     $this->db->from('barang_keluar');
+    //     $this->db->where('id_barangkeluar', '3');
+    //     $query = $this->db->get();
+    //     echo $query->num_rows();
+    // }
 
-    public function update($table, $data, $ket)
-    {
-        $this->db->where($ket);
-        $this->db->update($table, $data);
-    }   
-     
-    public function hapus_data($where,$table)
-    {
-		$this->db->where($where);
-		$this->db->delete($table);
-	}
-
-    public function detailupdate($table, $ket){
-        $query = $this->db->get_where($table, $ket)->row();
-        return $query;
-    }
+    // function counterItem(){
+    //     $this->db->select_sum('jumlah_kembali');
+    //     $this->db->where('barang_idkeluar', '5');
+    //     $t= $this->db->get('barang_kembali')->row();
+    //     return $t->jumlah_kembali;
+    // }
 
 }

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/js/select.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/js/DataTables/datatables.css">
+    <link rel="stylesheet" type="text/css" href="</?= base_url('assets'); ?/vendors/datatables/datatables.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/css/vertical-layout-light/style.css">

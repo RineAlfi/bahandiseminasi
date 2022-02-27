@@ -4,7 +4,8 @@
             <div class="col-md-12 grid-margin">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                    <h3 class="m-0 font-weight-bold">Riwayat Barang kembali</h3><br>
+                    <h4 class="m-0 font-weight-bold">Data Barang kembali</h4><br>
+                    <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
                     <!-- <div class="col-md-4 grid-margin">
                     <a href="<?//php echo base_url() ?>barangkembali/tambah" class="btn btn-success btn-md"><i class="ti ti-plus"></i> Tambah Barang kembali</a></div> -->
                     <div class="col-md-12 grid-margin">
@@ -22,7 +23,7 @@
                                         <th style= "text-align: center;">Id Barang Keluar</th> 
                                         <th style= "text-align: center;">Jumlah Kembali</th> 
                                         <th style= "text-align: center;">Tanggal Kembali</th> 
-                                        <th style= "text-align: center;">Keterangan</th> 
+                                        <!-- <th style= "text-align: center;">Keterangan</th>  -->
                                         <th style= "text-align: center;">File</th> 
                                         <th style= "text-align: center;">Aksi</th>
                                         </tr>
@@ -39,7 +40,7 @@
                                                 <td><?php echo $kk->id_barangkeluar ?></td>
                                                 <td><?php echo $kk->jumlah_kembali ?></td>
                                                 <td><?php echo $kk->tanggal_kembali; ?></td>
-                                                <td><?php echo $kk->keterangan; ?></td>
+                                                <!-- <td></?php echo $kk->keterangan; ?></td> -->
                                                 <td><a class="btn btn-sm btn-outline-primary btn-icon-text" href="<?php echo base_url() ?>assets/file/barangkembali/<?php echo $kk->dokumenkembali ?>"><i class="ti ti-download"></i> Unduh</a></td>
 
                                              <td>
