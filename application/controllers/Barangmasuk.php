@@ -218,7 +218,7 @@ class Barangmasuk extends CI_Controller {
     function get_barang()
     {
         $barang_id=$this->input->post('barang_id');
-        $data=$this->Databarang_m->get_data_barang_bybarang_id($barang_id);
+        $data=$this->Databarang_m->get_data_barang_bybarangid($barang_id);
         echo json_encode($data);
     }
 }
