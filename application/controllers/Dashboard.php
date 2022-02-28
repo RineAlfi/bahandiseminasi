@@ -2,6 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
+	public function __construct()
+    {
+        parent::__construct();
+
+        $this->load->model('Dashboard_m');
+    }
+
 
 	//public function __construct(){
 		//parent::__construct();
@@ -26,10 +33,9 @@ class Dashboard extends CI_Controller {
         $this->load->view('template/footer',$data);
 
 		$data['barang'] = $this->Dashboard_m->count('barang');
-        $data['barangmasuk'] = $this->Dashboard_m->count('barangmasuk');
-        $data['barangkeluar'] = $this->Dashboard_m->count('barangkeluar');
+        $data['barangmasuk'] = $this->Dashboard_m->count('barang_masuk');
+        $data['barangkeluar'] = $this->Dashboard_m->count('barang_keluar');
 
 	}
-
 
 }

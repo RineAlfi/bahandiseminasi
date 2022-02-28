@@ -46,9 +46,15 @@ class Masuk extends CI_Controller
                 $this->session->set_userdata($data);
                 redirect('satuan');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">  Kata Sandi Salah! </div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Kata Sandi Salah!</div>');
+                // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">  Kata Sandi Salah! </div>');
                 redirect('masuk');
             }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Akun Tidak Terdaftar!</div>');
+            redirect('masuk');
         }
     }
 

@@ -54,9 +54,9 @@
                    ';
                 }
                 ?>
-                <div class="my-2 d-flex text-center">
+                <!-- <div class="my-2 d-flex text-center">
                   <a href="#" class="auth-link text-black">Lupa Kata Sandi?</a>
-                </div>
+                </div> -->
               </form>
             </div>
           </div>

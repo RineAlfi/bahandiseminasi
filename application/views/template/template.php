@@ -286,12 +286,12 @@
             <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="</?php echo base_url(); ?>dashboard">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
                     <i class="ti ti-home-2" style="font-size: 22px; margin-right: 8px;"></i>
                     <span class="menu-title">Dashboard</span>
                     </a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                     <i class="ti ti-clipboard-list" style="font-size: 22px; margin-right: 8px;"></i>
