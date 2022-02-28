@@ -84,16 +84,6 @@ class Barangmasuk_m extends CI_model
         return $this->db->get('barang_masuk bm')->result_array();
     }
 
-    // function get_stok(){
-    //     $query = $this->db->get('barang')->result();
-    //     return $query;
-
-    // }	
-
-    // public function edit_data($where,$table){
-	// 	return $this->db->get_where($table,$where);
-	// }
-
 	public function hapus_data($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
@@ -110,5 +100,24 @@ class Barangmasuk_m extends CI_model
     //     $this->db->from('barang');
     //     return $this->db->get()->result();
     // }
+
+    // public function get_data_barang_bybarangid($barang_id)
+    // {
+    //     $hsl=$this->db->select('*');
+    //     $this->db->from('barang');
+    //     $this->db->join('barang_masuk', 'barang.id_barang = barang_masuk.barang_id');
+    //     // $this->db->join('barang_masuk', 'barang_masuk.barang_id = barang.id_barang');
+    //     return $hsl=$this->db->where('barang_id', $barang_id)->get()->row();
+    //     if($hsl->num_rows()>0){
+    //     foreach ($hsl->result() as $data) {
+    //         $hasil=array(
+    //             'barang_id' => $data->barang_id,
+    //             'stok' => $data->stok,
+    //             'satuan' => $data->satuan,
+    //             );
+	// 		}
+	// 	}
+	// 	return $hasil;
+	// }
     
 }

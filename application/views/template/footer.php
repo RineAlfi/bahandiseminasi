@@ -18,8 +18,8 @@
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <script src="<?php echo base_url() ?>assets/vendors/chart.js/Chart.min.js"></script>
-<!-- <script src="</?php echo base_url() ?>assets/vendors/datatables.net/jquery.dataTables.js"></script> -->
-<!-- <script src="</?php echo base_url() ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> -->
+<script src="<?php echo base_url() ?>assets/vendors/datatables.net/jquery.dataTables.js"></script> -->
+<script src="<?php echo base_url() ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <script src="<?php echo base_url() ?>assets/js/dataTables.select.min.js"></script>
 
 <!-- End plugin js for this page -->
@@ -44,12 +44,7 @@
 <script src="<?= base_url(); ?>assets/vendors/daterangepicker/moment.min.js"></script>
 <script src="<?= base_url(); ?>assets/vendors/daterangepicker/daterangepicker.min.js"></script>
 
-<script src="<?= base_url(); ?>assets/vendors/datatables/responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendors/datatables/responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="<?= base_url(); ?>assets/vendors/gijgo/js/gijgo.min.js"></script>
-<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script> -->
 
 <script src="<?= base_url(); ?>assets/vendors/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url(); ?>assets/vendors/datatables/dataTables.bootstrap4.min.js"></script>
@@ -68,8 +63,8 @@
 $(document).ready(function() {
             var table = $('#dataTable').DataTable({
                 buttons: ['copy', 'csv', 'print', 'excel', 'pdf'],
-                dom: "<'row px-2 px-md-2 pt-2'<'col-md-3'l><'col-md-5 text-center'B><'col-md-4'f>>" +
-                    "<'row'<'col-md-8'tr>>" +
+                dom: "<'row px-2 px-md-2 pt-2'<'col-md-3'l><'col-md-5 text-center mt-2'B><'col-md-4'f>>" +
+                    "<'row'<'col-md-12'tr>>" +
                     "<'row px-2 px-md-4 py-3'<'col-md-5'i><'col-md-7'p>>",
                 lengthMenu: [
                     [25, 50, 100, -1],

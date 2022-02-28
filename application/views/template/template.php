@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/js/select.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="</?= base_url('assets'); ?/vendors/datatables/datatables.css">
+    <!-- <link rel="stylesheet" type="text/css" href="</?= base_url('assets'); ?>/vendors/gijgo/css/gijgo.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="</?= base_url('assets'); ?>/js/DataTables/datatables.css"> -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/css/vertical-layout-light/style.css">
@@ -32,9 +33,6 @@
             font-size: 1.0rem !important;
             height: 80%;
     }</style>
-    <!-- CopyExcel
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css"> -->
     
 </head>
 

@@ -68,11 +68,11 @@
         </div>
     </div>
 </div>
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 <script>
         $('#barang_id').on('input',function(){
         
-        var barang_id=$(this).val();
+        var id_barang=$(this).val();
         $.ajax({
             type : "POST",
             url  : "<?php echo base_url('barangmasuk/get_barang')?>",
@@ -80,7 +80,7 @@
             data : {id_barang: barang_id},
             cache:false,
             success: function(data){
-                $.each(data,function(id_barang, stok){
+                $.each(data,function(barang_id, stok){
                     // $('[name="nama"]').val(data.nama_barang);
 
                     $('[name="barang_id"]').val(data.barang_id);
@@ -93,4 +93,4 @@
         });
         return false;
     });
-</script> -->
+</script>

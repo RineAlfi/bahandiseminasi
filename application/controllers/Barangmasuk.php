@@ -11,7 +11,7 @@ class Barangmasuk extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Barangmasuk_m');
-        // $this->load->model('Databarang_m');
+        $this->load->model('Databarang_m');
         $this->load->library('form_validation', 'upload');
     }
     public function index()
@@ -35,7 +35,7 @@ class Barangmasuk extends CI_Controller {
     {
         $barang = $this->Barangmasuk_m->get('barang');
         $data['title'] = 'Tambah Barang Masuk | Bahan Diseminasi';
-        // $data['id_barang'] = $this->Databarang_m->getList();
+        $data['barang_id'] = $this->Databarang_m->getList();
         // $data['barang'] = $this->Barangmasuk_m->get('barang');
         $data['barang'] = $barang;
         $this->form_validation->set_rules('tanggal_masuk', 'Tanggal', 'required');
@@ -215,10 +215,10 @@ class Barangmasuk extends CI_Controller {
 		redirect('barangmasuk');
 	}
 
-    // function get_barang()
-    // {
-    //     $barang_id=$this->input->post('barang_id');
-    //     $data=$this->Databarang_m->get_data_barang_bybarang_id($barang_id);
-    //     echo json_encode($data);
-    // }
+    function get_barang()
+    {
+        $barang_id=$this->input->post('barang_id');
+        $data=$this->Databarang_m->get_data_barang_bybarang_id($barang_id);
+        echo json_encode($data);
+    }
 }

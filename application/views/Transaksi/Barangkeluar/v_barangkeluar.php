@@ -4,27 +4,27 @@
             <div class="col-md-12 grid-margin">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                    <h4 class="m-0 font-weight-bold">Data Barang Keluar</h4><br>
+                    <h3 class="m-0 font-weight-bold">Data Barang Keluar</h3><br>
                     <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
-                    <div class="col-md-4 grid-margin">
+                    <div class="col-md-4 grid-margin mb-3">
                     <a href="<?php echo base_url() ?>barangkeluar/tambah" class="btn btn-success btn-sm"><i class="ti ti-plus"></i> Tambah Barang Keluar</a></div>
-                    <!-- <div class="col-md-12 grid-margin"> -->
+                    <div class="col-md-12 grid-margin">
                         <div class="card shadow mb-12">
                             <div class="col-sm-12 grid-margin stretch-card">
                             <div class="card">
                                 <!-- <div class="card-body"> -->
-                                <div class="table-responsive pt-3 ">
+                                <!-- <div class="table-responsive pt-3 "> -->
                                 <table id="dataTable" class="table table-striped table-bordered table-md" cellspacing="0" width='100%'>
                                     <thead  class="thead-light">
                                         <tr>
-                                        <th width='5px'>No</th>
-                                        <th width='5px' style= "text-align: center;">Tanggal Keluar</th>
-                                        <th width='5px' style= "text-align: center;">Nama Barang</th>
-                                        <th width='5px' style= "text-align: center;">Jumlah Keluar</th>
-                                        <th width='5px' style= "text-align: center;">Keterangan</th>
-                                        <th width='10px' style= "text-align: center;">Upload Berita Acara</th>
-                                        <th width='10px' style= "text-align: center;">File</th>
-                                        <th width='10px' style= "text-align: center;">Aksi</th>
+                                        <th style="width:2%">No</th>
+                                        <th style="width:2%">Tanggal Keluar</th>
+                                        <th style="width:5%; text-align: center;">Nama Barang</th>
+                                        <th style= "text-align: center;">Jumlah Keluar</th>
+                                        <!-- <th width='5px' style= "text-align: center;">Keterangan</th> -->
+                                        <!-- <th style= "text-align: center;">Upload Berita Acara</th> -->
+                                        <!-- <th width='10px' style= "text-align: center;">File</th> -->
+                                        <th style= "text-align: center;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,9 +38,9 @@
                                                 <td width='10px'><?php echo $bk['tanggal_keluar']; ?></td>
                                                 <td width='10px'><?php echo $bk['nama_barang']; ?></td>
                                                 <td><?php echo $bk['jumlah_keluar'] . ' ' . $bk['nama_satuan']; ?></td>
-                                                <td><?php echo $bk['keterangan']; ?></td>
-                                                <td><?php echo $bk['status']; ?></td>
-                                                <td><a class="btn btn-sm btn-outline-primary btn-icon-text" href="<?php echo base_url() ?>assets/file/barangkeluar/<?php echo $bk['dokumen'] ?>"><i class="ti ti-download"> Unduh</i></a></td>
+                                                <!-- <td></?php echo $bk['keterangan']; ?></td> -->
+                                                <!-- <td></?php echo $bk['status']; ?></td> -->
+                                                <!-- <td><a class="btn btn-sm btn-outline-primary btn-icon-text" href="</?php echo base_url() ?>assets/file/barangkeluar/</?php echo $bk['dokumen'] ?>"><i class="ti ti-download"> Unduh</i></a></td> -->
 
                                             <td>
                                                 <a class="btn btn-sm btn-warning" href="<?php echo base_url('/barangkeluar/detail/' . $bk['id_barangkeluar']) ?>"><i class="ti ti-eye"></i></a>

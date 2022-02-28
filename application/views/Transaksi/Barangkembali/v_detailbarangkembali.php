@@ -43,9 +43,15 @@
                                     <th>Keterangan</th>
                                     <td><?php echo $detaildata->keterangan?></td>
                                 </tr>
-                                <tr>
-                                    <th>File</th>
-                                    <td><a class="btn btn-sm btn-outline-primary btn-icon-text" href="<?php echo base_url() ?>assets/file/Barangkembali/<?php echo $detaildata->dokumenkembali ?>"><i class="ti ti-download"></i> <?php echo $detaildata->dokumenkembali?></a></td>
+                                <th>File</th>
+                                    <td>
+                                        <?php
+                                        if ($detaildata->dokumenkembali) { ?>
+                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= base_url() ?>assets/file/Barangkembali/<?= $detaildata->dokumenkembali ?>" target="_blank">
+                                                <i class="ti ti-download"></i> <?= $detaildata->dokumenkembali; ?>
+                                            </a>
+                                        <?php } ?>
+                                    </td>
                                 </tr>
                             </table>
                             <a href="<?php echo base_url() ?>barangkembali" class="btn btn-warning float-right" >Kembali</a>
