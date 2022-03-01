@@ -64,6 +64,7 @@ class Barangkembali extends CI_Controller {
                     echo "Unggah file gagal!";
                 }
             } else {
+                $foto = 'default.png';
             }
             
             $dokumen = $_FILES['dokumenkembali']['name'];
@@ -129,7 +130,9 @@ class Barangkembali extends CI_Controller {
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('fotokembali')) {
                     $foto_lama = $detail->fotokembali;
+                    if($foto_lama != 'default.png'){
                     unlink(FCPATH.'/assets/file/Barangkembali/'.$foto_lama);
+                    }
                     $foto = $this->upload->data('file_name');
                 } else {
                     echo "Unggah file gagal!";
