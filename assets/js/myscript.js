@@ -3,7 +3,7 @@ var flash = $('#flash').data('flash');
 if (flash) {
     Swal.fire({
         icon: 'error',
-        title: 'Peminjaman Barang',
+        title: 'Gagal!',
         text: flash,
     })
 }

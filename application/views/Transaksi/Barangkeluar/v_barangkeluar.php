@@ -47,6 +47,7 @@
                                                 <a class="btn btn-sm btn-success" href="<?php echo base_url('/barangkeluar/edit/' . $bk['id_barangkeluar']) ?>"><i class="ti ti-pencil"></i></a>
                                                 <a id="hapuskeluar" class="btn btn-sm btn-danger" href="<?php echo site_url('/barangkeluar/hapus/' . $bk['id_barangkeluar']) ?>"><i class="ti ti-trash"></i></a>
                                                 <a class="btn btn-sm btn-info" href="<?php echo base_url('/barangkembali/tambah/' . $bk['id_barangkeluar']) ?>"><i class="ti-back-left"></i></a>
+                                                <!-- <a class="btn btn-sm btn-secondary" href="</?php echo base_url('/barangkembali/tambah/' . $bk['id_barangkeluar']) ?>"><i class="ti ti-printer"></i></a> -->
                                             </td>
                                             </tr>
                                         <?php } ?>

@@ -52,27 +52,6 @@ class Barangkembali_m extends CI_model
         return $query->row();
     }
 
-    function join3wt($table, $table2, $table3, $ktabel21, $ktable31)
-    {
-        $this->db->select('*');
-        $this->db->from($table);
-        $this->db->join($table2, $ktabel21, 'left');
-        $this->db->join($table3, $ktable31, 'left');
-        // $this->db->where($ket, $param);
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
-    function joinbwt($barang_id)
-    {
-        $this->db->select('*');
-        $this->db->from('barang');
-        $this->db->join('jenis', 'jenis.id_jenis = barang.jenis_id', 'inner');
-        $this->db->join('satuan', 'satuan.id = barang.satuan_id', 'inner');
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
     public function getBarang()
     {
         $this->db->join('jenis j', 'b.jenis_id = j.id_jenis');
@@ -112,15 +91,6 @@ class Barangkembali_m extends CI_model
         return $query->row();
     }
 
-    function join2wt($table, $table2, $ktabel21)
-    {
-        $this->db->select('*');
-        $this->db->from($table);
-        $this->db->join($table2, $ktabel21, 'inner');
-        $query = $this->db->get();
-        return $query->result();
-    }
-
     public function update($table, $data, $ket)
     {
         $this->db->where($ket);
@@ -145,6 +115,13 @@ class Barangkembali_m extends CI_model
 		$this->db->update($table,$data);
 	}
 
+    public function sum($table, $field, $param)
+    {
+        $this->db->select_sum($field);
+        $this->db->where('barang_idkeluar', $param);
+        return $this->db->get($table)->row_array()[$field];
+    }
+
      // function get_all_data()
     // {
     //     $this->db->select('*');
@@ -154,6 +131,35 @@ class Barangkembali_m extends CI_model
     //     return $query->result_array();
     // }
 
+    // function join3wt($table, $table2, $table3, $ktabel21, $ktable31)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from($table);
+    //     $this->db->join($table2, $ktabel21, 'left');
+    //     $this->db->join($table3, $ktable31, 'left');
+    //     // $this->db->where($ket, $param);
+    //     $query = $this->db->get();
+    //     return $query->result_array();
+    // }
+
+    // function joinbwt($barang_id)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('barang');
+    //     $this->db->join('jenis', 'jenis.id_jenis = barang.jenis_id', 'inner');
+    //     $this->db->join('satuan', 'satuan.id = barang.satuan_id', 'inner');
+    //     $query = $this->db->get();
+    //     return $query->result_array();
+    // }
+
+    // function join2wt($table, $table2, $ktabel21)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from($table);
+    //     $this->db->join($table2, $ktabel21, 'inner');
+    //     $query = $this->db->get();
+    //     return $query->result();
+    // }
 
     // function join3($table, $table2, $table3, $ktabel21, $ktable31, $ket, $param)
     // {
