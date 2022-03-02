@@ -133,10 +133,17 @@ class Barangkembali_m extends CI_model
 		$this->db->delete($table);
 	}
 
-    public function detailupdate($table, $ket){
+    public function detailupdate($table, $ket)
+    {
         $query = $this->db->get_where($table, $ket)->row();
         return $query;
     }
+
+    public function update_data_stok($where,$data,$table)
+    {
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
 
      // function get_all_data()
     // {

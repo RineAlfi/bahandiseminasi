@@ -40,8 +40,8 @@
                                     <td><?php echo $detailbarang->nama_jenis?></td>
                                 </tr>
                                 <tr>
-                                    <th>Keterangan</th>
-                                    <td><?php echo $detaildata->keterangan?></td>
+                                    <th>Keterangan Kembali</th>
+                                    <td><?php echo $detaildata->keterangankembali?></td>
                                 </tr>
                                 <th>File</th>
                                     <td>

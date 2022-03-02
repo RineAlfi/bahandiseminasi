@@ -38,9 +38,9 @@
                         <?php echo form_error('jumlah_kembali', '<div class="text-small text-danger"></div>')?>
                     </div>
                     <div class="form-group">
-                        <label><b>Keterangan</b></label>
-                        <input type="text" name="keterangan" value="<?php echo set_value('keterangan', $barangkembali->keterangan); ?>" name="keterangan" class="form-control">
-                        <?php echo form_error('keterangan', '<div class="text-small text-danger"></div>')?>
+                        <label><b>Keterangan Kembali</b></label>
+                        <input type="text" name="keterangankembali" value="<?php echo set_value('keterangankembali', $barangkembali->keterangankembali); ?>" name="keterangankembali" class="form-control">
+                        <?php echo form_error('keterangankembali', '<div class="text-small text-danger"></div>')?>
                     </div>
                     <div class="form-group">
                         <label><b>Foto Produk</b></label>

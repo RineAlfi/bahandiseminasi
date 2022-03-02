@@ -84,12 +84,20 @@ class Barangkembali extends CI_Controller {
                 'barang_idkeluar'=>$barang->id_barangkeluar,
                 'tanggal_kembali' => $this->input->post('tanggal_kembali'),
                 'jumlah_kembali' => $this->input->post('jumlah_kembali'),
-                'keterangan' => $this->input->post('keterangankembali'),
+                'keterangankembali' => $this->input->post('keterangankembali'),
                 'fotokembali' => $foto,
                 'dokumenkembali' => $dokumen
             ];
             // var_dump($data);
-            $this->Barangkembali_m->input_data($data, 'barang_kembali');
+            $this->db->insert('barang_kembali', $data);
+            $barang_id = $barang->barang_id;
+            $where2 = ['id_barang' => $barang_id];
+            $stokskg = $barang->stok;
+            $jumlahkembali = $this->input->post('jumlah_kembali');
+            $data2 = [
+                'stok' => (int) $stokskg + $jumlahkembali
+            ];
+            $this->Barangkembali_m->update_data_stok($where2, $data2, 'barang');
             $this->session->set_flashdata('sukses', 'Data Barang Kembali Berhasil Ditambahkan');
             redirect('barangkembali');        
         }
@@ -160,11 +168,19 @@ class Barangkembali extends CI_Controller {
             'tanggal_kembali' => $this->input->post('tanggal_kembali'),
             'barang_idkeluar' => $detail->barang_idkeluar,
             'jumlah_kembali' => $this->input->post('jumlah_kembali'),
-            'keterangan' => $this->input->post('keterangan'),
+            'keterangankembali' => $this->input->post('keterangankembali'),
             'fotokembali' => $foto,
             'dokumenkembali' => $dokumen
         ];
         // var_dump($data);
+        $barang_id = $barang->barang_id;
+        $where2 = ['id_barang' => $barang_id];
+        $stokskg = $barang->stok;
+        $jumlahkembali = $this->input->post('jumlah_kembali');
+        $data2 = [
+            'stok' => (int) $stokskg - $jumlahkembali + $jumlahkembali
+        ];
+        $this->Barangkembali_m->update_data_stok($where2, $data2, 'barang');  
         $this->Barangkembali_m->update('barang_kembali', $data, $ket);
         $this->session->set_flashdata('sukses', 'Data Barang kembali Berhasil Diubah');
         redirect('barangkembali');
@@ -192,6 +208,14 @@ class Barangkembali extends CI_Controller {
 	{
 		$where = array('id_barangkembali' => $id_barangkembali);
 		$this->Databarang_m->hapus_data($where, 'barang_kembali');
+        $barang_id = $barang->barang_id;
+            $where2 = ['id_barang' => $barang_id];
+            $stokskg = $barang->stok;
+            $jumlahkembali = $this->input->post('jumlah_kembali');
+            $data2 = [
+                'stok' => (int) $stokskg - $jumlahkembali
+            ];
+        $this->Barangkembali_m->update_data_stok($where2, $data2, 'barang');
         $this->session->set_flashdata('sukses', 'Data Barang kembali Berhasil Dihapus');
 		redirect('barangkembali');
 	}
