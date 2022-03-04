@@ -36,7 +36,14 @@
                                     </div>
                                     <div class="form-group"><br>
                                     <label><b>Tanggal</b></label>
-                                        <input value="<?= set_value('tanggal'); ?>" name="tanggal" id="tanggal" type="date" name="tanggal_keluar" class="form-control">
+                                        <div class="input-group">
+                                            <input value="<?= set_value('tanggal'); ?>" name="tanggal" id="tanggal" type="text" class="form-control" placeholder="Periode Tanggal">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="ti ti-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                        <!-- <input value="<?= set_value('tanggal'); ?>" name="tanggal" id="tanggal" type="text" class="form-control" placeholder="Periode Tanggal"> -->
+                                        <!-- <input value="<?= set_value('tanggal'); ?>" name="tanggal" id="tanggal_laporan" type="date" name="tanggal_keluar" class="form-control"> -->
                                         <?php echo form_error('tanggal_keluar', '<div class="text-small text-danger"></div>') ?>
                                     </div>
                                     <button type="button" class="btn btn-outline-primary btn-icon-text">

@@ -10,8 +10,8 @@
                 <form method="POST" action="<?php echo base_url('jenis/tambah_aksi') ?>">
                     <div class="form-group">
                         <label>Data Jenis Barang</label>
-                        <input type="text" name="nama_jenis" class="form-control" required>
-                        <?php echo form_error('jenis', '<div class="text-small text-danger"></div>') ?>
+                        <input type="text" name="nama_jenis" class="form-control" required>  
+                        <?php echo form_error('nama_jenis', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
                     <!-- <button type="reset" class="btn btn-secondary">Reset</a></button>&nbsp &nbsp -->

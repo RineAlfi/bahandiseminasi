@@ -114,7 +114,7 @@ class Barangkembali extends CI_Controller {
 
     public function edit($id_barangkembali)
     {
-        $this->_validasi();
+        $this-> _validasi();
         $data['detail'] = $this->Barangkembali_m->getDetail($id_barangkembali);
         $data['barang'] = $this->Barangkembali_m->get('barang');
         $ket = 'barang_kembali.id_barangkembali';

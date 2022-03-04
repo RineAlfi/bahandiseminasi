@@ -18,8 +18,8 @@
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <script src="<?php echo base_url() ?>assets/vendors/chart.js/Chart.min.js"></script>
-<script src="<?php echo base_url() ?>assets/vendors/datatables.net/jquery.dataTables.js"></script> -->
-<script src="<?php echo base_url() ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
+<!-- <script src="<?php echo base_url() ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> -->
 <script src="<?php echo base_url() ?>assets/js/dataTables.select.min.js"></script>
 
 <!-- End plugin js for this page -->
@@ -60,7 +60,38 @@
 <script src="<?= base_url(); ?>assets/vendors/datatables/responsive/js/responsive.bootstrap4.min.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function() {
+        $(function() {
+            $('.date').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'yyyy-mm-dd'
+            });
+
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+
+            function cb(start, end) {
+                $('#tanggal').val(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+            }
+
+            $('#tanggal').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Hari ini': [moment(), moment()],
+                    'Kemarin': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '7 hari terakhir': [moment().subtract(6, 'days'), moment()],
+                    '30 hari terakhir': [moment().subtract(29, 'days'), moment()],
+                    'Bulan ini': [moment().startOf('month'), moment().endOf('month')],
+                    'Bulan lalu': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                    'Tahun ini': [moment().startOf('year'), moment().endOf('year')],
+                    'Tahun lalu': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')]
+                }
+            }, cb);
+
+            cb(start, end);
+        });
+
+        $(document).ready(function() {
             var table = $('#dataTable').DataTable({
                 buttons: ['copy', 'csv', 'print', 'excel', 'pdf'],
                 dom: "<'row px-2 px-md-2 pt-2'<'col-md-3'l><'col-md-5 text-center mt-2'B><'col-md-4'f>>" +
@@ -81,66 +112,34 @@ $(document).ready(function() {
         });
 </script>
 
-<!-- <script type="text/javascript">
-        let hal = '</?= $this->uri->segment(1); ?>';
+<script type="text/javascript">
+        let hal = '<?= $this->uri->segment(1); ?>';
 
         let satuan = $('#satuan');
         let stok = $('#stok');
-        let total = $('#total_stok');
+        // let total = $('#total_stok');
         let jumlah = hal == 'barangmasuk' ? $('#jumlah_masuk') : $('#jumlah_keluar');
 
         $(document).on('change', '#barang_id', function() {
-            let url = '</?= base_url('barang/getstok/'); ?>' + this.value;
+            let url = '<?= base_url('barang/getstok/'); ?>' + this.value;
             $.getJSON(url, function(data) {
                 satuan.html(data.nama_satuan);
                 stok.val(data.stok);
-                total.val(data.stok);
-                jumlah.focus();
+                // total.val(data.stok);
+                // jumlah.focus();
             });
         });
 
-        $(document).on('keyup', '#jumlah_masuk', function() {
-            let totalStok = parseInt(stok.val()) + parseInt(this.value);
-            total.val(Number(totalStok));
-        });
+        // $(document).on('keyup', '#jumlah_masuk', function() {
+        //     let totalStok = parseInt(stok.val()) + parseInt(this.value);
+        //     total.val(Number(totalStok));
+        // });
 
-        $(document).on('keyup', '#jumlah_keluar', function() {
-            let totalStok = parseInt(stok.val()) - parseInt(this.value);
-            total.val(Number(totalStok));
-        });
-</script> -->
-<!-- <script type="text/javascript">
-        $(function() {
-            $('.date').datepicker({
-                uiLibrary: 'bootstrap4',
-                format: 'yyyy-mm-dd'
-            });
-
-            var start = moment().subtract(29, 'days');
-            var end = moment();
-
-            function cb(start, end) {
-                $('#tangal').val(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
-            }
-
-            $('#tanggal').daterangepicker({
-                startDate: start,
-                endDate: end,
-                ranges: {
-                    'Hari ini': [moment(), moment()],
-                    'Kemarin': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    '7 hari terakhir': [moment().subtract(6, 'days'), moment()],
-                    '30 hari terakhir': [moment().subtract(29, 'days'), moment()],
-                    'Bulan ini': [moment().startOf('month'), moment().endOf('month')],
-                    'Bulan lalu': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                    'Tahun ini': [moment().startOf('year'), moment().endOf('year')],
-                    'Tahun lalu': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')]
-                }
-            }, cb);
-
-            cb(start, end);
-        });
-</script> -->
+        // $(document).on('keyup', '#jumlah_keluar', function() {
+        //     let totalStok = parseInt(stok.val()) - parseInt(this.value);
+        //     total.val(Number(totalStok));
+        // });
+</script>
 
 <!-- <script type="text/javascript" charset="utf8" src="</?php echo base_url() ?>assets/js/DataTables/datatables.js"></script>
 <script>

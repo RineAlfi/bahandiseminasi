@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label><b>Tanggal Keluar</b></label>
                         <input type="date" name="tanggal_keluar" value="<?php echo set_value('tanggal_keluar', $barangkembali->tanggal_keluar); ?>" name="tanggal_keluar" type="text" class="form-control" readonly required>
-                        <?php echo form_error('tanggal_keluar', '<div class="text-small text-danger"></div>')?>
+                        <?php echo form_error('tanggal_keluar', '<small class="text-danger">', '</small>')?>
                     </div>
                     <div class="form-group">
                         <label><b>Nama Barang</b></label>
@@ -29,28 +29,28 @@
                     </div>
                     <div class="form-group">
                         <label><b>Tanggal Kembali</b></label>
-                        <input type="date" name="tanggal_kembali" value="<?php echo set_value('tanggal_kembali', $barangkembali->tanggal_kembali); ?>" class="form-control" required>
-                        <?php echo form_error('tanggal_kembali', '<div class="text-small text-danger"></div>') ?>
+                        <input type="date" name="tanggal_kembali" value="<?php echo set_value('tanggal_kembali', $barangkembali->tanggal_kembali); ?>" class="form-control">
+                        <?php echo form_error('tanggal_kembali', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group">
                         <label><b>Jumlah Kembali</b></label>
                         <input type="number" name="jumlah_kembali" value="<?php echo set_value('jumlah_kembali', $barangkembali->jumlah_kembali); ?>" name="jumlah_kembali" class="form-control" required>
-                        <?php echo form_error('jumlah_kembali', '<div class="text-small text-danger"></div>')?>
+                        <?php echo form_error('jumlah_kembali', '<small class="text-danger">', '</small>')?>
                     </div>
                     <div class="form-group">
                         <label><b>Keterangan Kembali</b></label>
                         <input type="text" name="keterangankembali" value="<?php echo set_value('keterangankembali', $barangkembali->keterangankembali); ?>" name="keterangankembali" class="form-control">
-                        <?php echo form_error('keterangankembali', '<div class="text-small text-danger"></div>')?>
+                        <?php echo form_error('keterangankembali', '<small class="text-danger">', '</small>')?>
                     </div>
                     <div class="form-group">
                         <label><b>Foto Produk</b></label>
                         <input type="file" name="fotokembali" value="<?php echo set_value('foto', $barangkembali->foto); ?>" name="fotokembali" class="form-control">
-                        <?php echo form_error('fotokembali', '<div class="text-small text-danger"></div>')?>
+                        <?php echo form_error('fotokembali', '<small class="text-danger">', '</small>')?>
                     </div>
                     <div class="form-group">
                         <label><b>File</b></label>
                         <input type="file" name="dokumenkembali" value="<?php echo set_value('dokumen', $barangkembali->dokumenkembali); ?>" name="dokumenkembali" class="form-control">
-                        <?php echo form_error('dokumenkembali', '<div class="text-small text-danger"></div>')?>
+                        <?php echo form_error('dokumenkembali', '<small class="text-danger">', '</small>')?>
                     </div>
 
                     <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp

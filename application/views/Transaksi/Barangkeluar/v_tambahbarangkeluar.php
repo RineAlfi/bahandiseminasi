@@ -11,7 +11,7 @@
                                 <div class="form-group">
                                 <label><b>Tanggal keluar</b></label>
                                     <input type="date" name="tanggal_keluar" class="form-control">
-                                    <?php echo form_error('tanggal_keluar', '<div class="text-small text-danger"></div>') ?>
+                                    <?php echo form_error('tanggal_keluar', '<small class="text-danger">', '</small>') ?>
                                 </div>
                                 <div class="form-group">
                                 <label><b>Nama Barang</b></label>
@@ -40,7 +40,7 @@
                                 <div class="form-group">
                                 <label><b>Keterangan</b></label>
                                     <input type="text" name="keterangan" id="keterangan" class="form-control">
-                                    <?php echo form_error('keterangan', '<div class="text-small text-danger"></div>')?>
+                                    <?php echo form_error('keterangan', '<small class="text-danger">', '</small>')?>
                                 </div>
                                 <div class="form-group">
                                     <label><b>Foto Produk</b></label>

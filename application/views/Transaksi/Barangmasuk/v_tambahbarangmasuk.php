@@ -11,7 +11,7 @@
                             <div class="form-group">
                                 <label><b>Tanggal Masuk</b></label>
                                     <input type="date" name="tanggal_masuk" class="form-control">
-                                    <?php echo form_error('tanggal_masuk', '<div class="text-small text-danger"></div>') ?>
+                                    <?php echo form_error('tanggal_masuk', '<small class="text-danger">', '</small>') ?>
                                 </div>
                             <div class="form-group">
                             <label><b>Nama Barang</b></label>
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label><b>Stok</b></label>
                                 <div class="col-md-15">
-                                    <input readonly="readonly" name="stok" id="stok" type="number" class="form-control">
+                                    <input readonly="readonly" id="stok" type="number" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -46,7 +46,7 @@
                             <div class="form-group">
                             <label><b>Keterangan</b></label>
                                 <input type="text" name="keterangan" id="keterangan" class="form-control">
-                                <?php echo form_error('keterangan', '<div class="text-small text-danger"></div>')?>
+                                <?php echo form_error('keterangan', '<small class="text-danger">', '</small>')?>
                             </div>
                             <div class="form-group">
                                 <label><b>Foto Produk</b></label>
@@ -69,7 +69,7 @@
     </div>
 </div>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-<script>
+<!-- <script>
         $('#barang_id').on('input',function(){
         
         var id_barang=$(this).val();
@@ -93,4 +93,4 @@
         });
         return false;
     });
-</script>
+</script> -->

@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <label>Data Satuan Barang</label>
                         <input type="text" name="nama_satuan" class="form-control" required>
-                        <?php echo form_error('satuan', '<div class="text-small text-danger"></div>') ?>
+                        <?php echo form_error('nama_satuan', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
                     <!-- <button type="reset" class="btn btn-secondary">Reset</a></button>&nbsp &nbsp -->

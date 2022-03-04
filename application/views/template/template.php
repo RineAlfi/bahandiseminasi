@@ -12,10 +12,8 @@
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/js/select.dataTables.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="</?= base_url('assets'); ?>/vendors/gijgo/css/gijgo.min.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="</?= base_url('assets'); ?>/js/DataTables/datatables.css"> -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
@@ -33,6 +31,21 @@
             font-size: 1.0rem !important;
             height: 80%;
     }</style>
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/daterangepicker/daterangepicker.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/datatables/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/datatables/buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/datatables/responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/gijgo/css/gijgo.min.css">
+
+    <style>
+        #accordionSidebar,
+        .topbar {
+            z-index: 1;
+        }
+    </style>
+
     
 </head>
 
@@ -286,12 +299,12 @@
             <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
                     <i class="ti ti-home-2" style="font-size: 22px; margin-right: 8px;"></i>
                     <span class="menu-title">Dashboard</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                     <i class="ti ti-clipboard-list" style="font-size: 22px; margin-right: 8px;"></i>

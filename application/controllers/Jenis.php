@@ -8,6 +8,7 @@ class Jenis extends CI_Controller {
         $this->load->Model('Jenis_m');
         $this->load->helper('url');
     }
+
     function index()
     {
         $data['jenis'] = $this->Jenis_m->tampil_data('jenis')->result();
@@ -16,13 +17,21 @@ class Jenis extends CI_Controller {
 		$this->load->view('DataMaster/jenis/v_jenis',$data);
         $this->load->view('template/footer',$data);
     }
+
+    private function _validasi()
+    {
+        $this->form_validation->set_rules('nama_jenis', 'Nama Jenis', 'required|trim');
+    }
+
     function tambah()
 	{
+        $this-> _validasi();
 		$data['title'] = 'Tambah Jenis Barang | Bahan Diseminasi';
         $this->load->view('template/template',$data);
 		$this->load->view('DataMaster/jenis/v_tambahjenis',$data);
         $this->load->view('template/footer',$data);
     }
+
     function tambah_aksi()
     {
         $jenis = $this->input->post('nama_jenis');
@@ -33,6 +42,7 @@ class Jenis extends CI_Controller {
         $this->session->set_flashdata('sukses', 'Data Jenis Barang Berhasil Ditambahkan');
         redirect('jenis');
     }
+
     function edit($id_jenis)
     {
         $where = array('id_jenis' => $id_jenis);
@@ -42,6 +52,7 @@ class Jenis extends CI_Controller {
 		$this->load->view('DataMaster/jenis/v_editjenis',$data);
         $this->load->view('template/footer',$data);
     }
+
     function update()
     {
         $id_jenis = $this->input->post('id');
@@ -58,6 +69,7 @@ class Jenis extends CI_Controller {
         $this->session->set_flashdata('sukses', 'Data Jenis Barang Berhasil Diubah');
         redirect('jenis');
     }
+
     function hapus($id_jenis)
 	{
 		$where = array('id_jenis' => $id_jenis);
