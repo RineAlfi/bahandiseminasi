@@ -19,7 +19,7 @@
                                         <select name="barang_id" id="barang_id" class="form-control">
                                             <option value="" selected disabled>--Pilih Barang--</option>
                                             <?php foreach ($barang as $b) : ?>
-                                                <option <?php echo $this->uri->segment(3) == $b['id_barang'] ? 'selected' : '';  ?> <?php echo set_select('barang_id', $b['id_barang']) ?> value="<?php echo $b['id_barang'] ?>"><?php echo $b['nama_barang']?></option>
+                                                <option <?php echo set_select('barang_id', $b['id_barang']) ?> value="<?php echo $b['id_barang'] ?>"><?php echo $b['nama_barang']?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label><b>Stok</b></label>
                                 <div class="col-md-15">
-                                    <input readonly="readonly" id="stok" type="number" class="form-control">
+                                    <input readonly="readonly" id="stok" name="stok" type="number" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -36,13 +36,19 @@
                                 <div class="col-md-15">
                                     <div class="input-group">
                                         <input value="<?php echo set_value('jumlah_masuk');?>" name="jumlah_masuk" id="jumlah_masuk" type="number" class="form-control">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" name="satuan" id="satuan" >Satuan</span>
+                                        <div class="input-group-append" >
+                                            <span><input readonly="readonly" id="satuan" name="satuan" type="number" class="form-control" placeholder=Satuan ></span>
                                         </div>
                                     </div>
                                     <?php echo form_error('jumlah_masuk', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>
+                            <!-- <div class="form-group">
+                                <label><b>Satuan</b></label>
+                                <div class="col-md-15">
+                                    <input readonly="readonly" id="satuan" name="satuan" type="number" class="form-control">
+                                </div>
+                            </div> -->
                             <div class="form-group">
                             <label><b>Keterangan</b></label>
                                 <input type="text" name="keterangan" id="keterangan" class="form-control">
@@ -68,24 +74,24 @@
         </div>
     </div>
 </div>
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-<!-- <script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
         $('#barang_id').on('input',function(){
         
-        var id_barang=$(this).val();
+        var barang_id=$(this).val();
         $.ajax({
             type : "POST",
-            url  : "<?php echo base_url('barangmasuk/get_barang')?>",
+            url  : "<?php echo base_url('barang/get_barang')?>",
             dataType : "JSON",
-            data : {id_barang: barang_id},
+            data : {barang_id: barang_id},
             cache:false,
             success: function(data){
-                $.each(data,function(barang_id, stok){
+                $.each(data,function(barang_id, stok, satuan_id){
                     // $('[name="nama"]').val(data.nama_barang);
 
                     $('[name="barang_id"]').val(data.barang_id);
                     $('[name="stok"]').val(data.stok);
-                    // $('[name="satuan"]').val(data.satuan);
+                    $('[name="satuan"]').val(data.satuan_id);
                     
                 });
                 
@@ -93,4 +99,4 @@
         });
         return false;
     });
-</script> -->
+</script>

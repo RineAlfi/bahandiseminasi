@@ -26,6 +26,12 @@
                                         <?php echo form_error('barang_id', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
+                                <label><b>Stok</b></label>
+                                <div class="col-md-15">
+                                    <input readonly="readonly" id="stok" name="stok" type="number" class="form-control">
+                                </div>
+                                </div>
+                                <div class="form-group">
                                 <label><b>Jumlah keluar</b></label>
                                     <div class="col-md-15">
                                         <div class="input-group">
@@ -64,3 +70,29 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+        $('#barang_id').on('input',function(){
+        
+        var barang_id=$(this).val();
+        $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url('barang/get_barang')?>",
+            dataType : "JSON",
+            data : {barang_id: barang_id},
+            cache:false,
+            success: function(data){
+                $.each(data,function(barang_id, stok, satuan){
+                    // $('[name="nama"]').val(data.nama_barang);
+
+                    $('[name="barang_id"]').val(data.barang_id);
+                    $('[name="stok"]').val(data.stok);
+                    $('[name="satuan"]').val(data.satuan);
+                    
+                });
+                
+            }
+        });
+        return false;
+    });
+</script>

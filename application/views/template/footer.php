@@ -112,67 +112,11 @@
         });
 </script>
 
-<script type="text/javascript">
-        let hal = '<?= $this->uri->segment(1); ?>';
-
-        let satuan = $('#satuan');
-        let stok = $('#stok');
-        // let total = $('#total_stok');
-        let jumlah = hal == 'barangmasuk' ? $('#jumlah_masuk') : $('#jumlah_keluar');
-
-        $(document).on('change', '#barang_id', function() {
-            let url = '<?= base_url('barang/getstok/'); ?>' + this.value;
-            $.getJSON(url, function(data) {
-                satuan.html(data.nama_satuan);
-                stok.val(data.stok);
-                // total.val(data.stok);
-                // jumlah.focus();
-            });
-        });
-
-        // $(document).on('keyup', '#jumlah_masuk', function() {
-        //     let totalStok = parseInt(stok.val()) + parseInt(this.value);
-        //     total.val(Number(totalStok));
-        // });
-
-        // $(document).on('keyup', '#jumlah_keluar', function() {
-        //     let totalStok = parseInt(stok.val()) - parseInt(this.value);
-        //     total.val(Number(totalStok));
-        // });
-</script>
-
 <!-- <script type="text/javascript" charset="utf8" src="</?php echo base_url() ?>assets/js/DataTables/datatables.js"></script>
 <script>
     $(document).ready(function() {
         $('#datatable').DataTable();
     });
-</script> -->
-
-<!-- <script>
-    $('#datatable').DataTable(
-        dom: 'Bfrtip',
-        buttons: [{
-            extends: 'copy',
-            oriented: 'potrait',
-            download: 'open',
-            widthX: '90px'
-        },
-        'csv', 'excel', 'pdf', 'print'
-        ]
-    });
-</script> -->
-    
-<!-- <script>
-    $(document).ready(function () {
-    $('#dtBasicExample').DataTable();
-    $('.dataTables_length').addClass('bs-select');
-    // $('#example').DataTable( {
-    //     dom: 'Bfrtip',
-    //     buttons: [
-    //         'copy', 'csv', 'excel', 'pdf', 'print'
-    //     ]
-    //  );
-});
 </script> -->
 
 </body>
