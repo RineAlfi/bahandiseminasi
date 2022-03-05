@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Barang extends CI_Controller {
+class Databarang extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -43,7 +43,7 @@ class Barang extends CI_Controller {
 
             if($insert){
                 $this->session->set_flashdata('sukses', 'Data Barang Berhasil Ditambahkan');
-                redirect('barang');
+                redirect('databarang');
             } else {
                 $this->session->set_flashdata('error');
                 redirect('data_barang/v_tambahdatabarang');
@@ -79,7 +79,7 @@ class Barang extends CI_Controller {
 
             if ($update) {
                 $this->session->set_flashdata('sukses', 'Data Barang Berhasil Diubah');
-                redirect('barang');
+                redirect('databarang');
 
             } else {
                 $this->session->$this->session->set_flashdata('error', 'Data Barang Gagal Ditambahkan');
@@ -93,7 +93,7 @@ class Barang extends CI_Controller {
 		$where = array('id_barang' => $id_barang);
 		$this->Databarang_m->hapus_data($where, 'barang');
         $this->session->set_flashdata('sukses', 'Data Barang Berhasil Dihapus');
-		redirect('barang');
+		redirect('databarang');
 	}
 
     function get_barang()

@@ -77,7 +77,7 @@
         var barang_id=$(this).val();
         $.ajax({
             type : "POST",
-            url  : "<?php echo base_url('barang/get_barang')?>",
+            url  : "<?php echo base_url('databarang/get_barang')?>",
             dataType : "JSON",
             data : {barang_id: barang_id},
             cache:false,

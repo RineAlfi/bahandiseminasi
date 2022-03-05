@@ -315,7 +315,7 @@
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="<?=base_url()?>satuan">Satuan Barang</a></li>
                         <li class="nav-item"> <a class="nav-link" href="<?=base_url()?>jenis">Jenis Barang</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="<?=base_url()?>barang">Data Barang</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="<?=base_url()?>databarang">Data Barang</a></li>
                     </ul>
                     </div>
                 </li>

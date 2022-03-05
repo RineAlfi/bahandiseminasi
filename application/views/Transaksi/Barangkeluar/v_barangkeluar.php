@@ -14,12 +14,12 @@
                             <div class="card">
                                 <!-- <div class="card-body"> -->
                                 <!-- <div class="table-responsive pt-3 "> -->
-                                <table id="dataTable" class="table table-striped table-bordered table-md" cellspacing="0" width='100%'>
+                                <table id="dataTable" class="table table-striped table-bordered table-md" style="width:100%"'>
                                     <thead  class="thead-light">
                                         <tr>
                                         <th style="width:2%">No</th>
                                         <th style="width:2%">Tanggal Keluar</th>
-                                        <th style="width:5%; text-align: center;">Nama Barang</th>
+                                        <th style="width:3%; text-align: center;">Nama Barang</th>
                                         <th style= "text-align: center;">Jumlah Keluar</th>
                                         <!-- <th width='5px' style= "text-align: center;">Keterangan</th> -->
                                         <!-- <th style= "text-align: center;">Upload Berita Acara</th> -->
@@ -47,7 +47,7 @@
                                                 <a class="btn btn-sm btn-success" href="<?php echo base_url('/barangkeluar/edit/' . $bk['id_barangkeluar']) ?>"><i class="ti ti-pencil"></i></a>
                                                 <a id="hapuskeluar" class="btn btn-sm btn-danger" href="<?php echo site_url('/barangkeluar/hapus/' . $bk['id_barangkeluar']) ?>"><i class="ti ti-trash"></i></a>
                                                 <a class="btn btn-sm btn-info" href="<?php echo base_url('/barangkembali/tambah/' . $bk['id_barangkeluar']) ?>"><i class="ti-back-left"></i></a>
-                                                <!-- <a class="btn btn-sm btn-secondary" href="</?php echo base_url('/barangkembali/tambah/' . $bk['id_barangkeluar']) ?>"><i class="ti ti-printer"></i></a> -->
+                                                <a class="btn btn-sm btn-secondary" href="<?php echo base_url('/pdfberitaacara/pdf' . $bk['id_barangkeluar']) ?>"><i class="ti ti-printer"></i></a>
                                             </td>
                                             </tr>
                                         <?php } ?>

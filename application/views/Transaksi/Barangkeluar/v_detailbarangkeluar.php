@@ -48,6 +48,16 @@
                                         <?php } ?>
                                     </td>
                                 </tr>
+                                <th>Berita Acara</th>
+                                    <td>
+                                        <?php
+                                        if ($detail->beritaacara) { ?>
+                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= base_url() ?>assets/file/Barangkeluar/<?= $detail->beritaacara ?>" target="_blank">
+                                                <i class="ti ti-download"></i> <?= $detail->beritaacara; ?>
+                                            </a>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
                             </table>
                             <a href="<?php echo base_url() ?>barangkeluar" class="btn btn-warning float-right" >Kembali</a>
                             </div>

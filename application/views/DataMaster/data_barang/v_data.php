@@ -7,7 +7,7 @@
                     <h3 class="m-0 font-weight-bold">Data Barang</h3><br>
                     <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
                     <div class="col-md-4 grid-margin mb-3">
-                    <a href="<?php echo base_url() ?>barang/tambah" class="btn btn-success btn-sm"><i class="ti ti-plus"></i> Tambah Barang</a></div>
+                    <a href="<?php echo base_url() ?>databarang/tambah" class="btn btn-success btn-sm"><i class="ti ti-plus"></i> Tambah Barang</a></div>
                     <div class="col-md-12 grid-margin">
                         <div class="card shadow mb-12">
                             <div class="col-sm-12 grid-margin stretch-card">
@@ -39,8 +39,8 @@
                                                     <td><?php echo $b['stok'] ?></td>
                                                     <td><?php echo $b['nama_satuan'] ?></td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-success" href="<?php echo base_url('/barang/edit/' . $b['id_barang']) ?>"><i class="ti ti-pencil"></i></a>
-                                                        <a id="hapusbarang" class="btn btn-sm btn-danger" href="<?php echo site_url('/barang/hapus/' . $b['id_barang']) ?>"><i class="ti ti-trash"></i></a>
+                                                        <a class="btn btn-sm btn-success" href="<?php echo base_url('/databarang/edit/' . $b['id_barang']) ?>"><i class="ti ti-pencil"></i></a>
+                                                        <a id="hapusbarang" class="btn btn-sm btn-danger" href="<?php echo site_url('/databarang/hapus/' . $b['id_barang']) ?>"><i class="ti ti-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>

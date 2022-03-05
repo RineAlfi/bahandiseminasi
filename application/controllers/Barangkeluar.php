@@ -172,13 +172,27 @@ class Barangkeluar extends CI_Controller {
             } else {
                 $dokumen= $detail->dokumen;
             }
+            $beritaacara = $_FILES['beritaacara']['name'];
+            if ($beritaacara) {
+                $config['upload_path'] = './assets/file/barangkeluar';
+                $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
+                $config['max_size']     = '30000';
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('beritaacara')) {
+                    $beritaacara = $this->upload->data('file_name');
+                } else {
+                    echo "Unggah file gagal!";
+                }
+            } else {
+            }
         $data = [
             'tanggal_keluar' => $this->input->post('tanggal_keluar'),
             'barang_id' => $this->input->post('barang_id'),
             'jumlah_keluar' => $this->input->post('jumlah_keluar'),
             'keterangan' => $this->input->post('keterangan'),
             'foto' => $foto,
-            'dokumen' => $dokumen
+            'dokumen' => $dokumen,
+            'beritaacara' => $beritaacara
         ];
         // var_dump($data);
         $this->Barangkeluar_m->update('barang_keluar', $data, $ket);

@@ -52,6 +52,11 @@
                         <input type="file" name="dokumen" value="<?php echo set_value('dokumen', $barangkeluar['dokumen']); ?>" name="dokumen" class="form-control">
                         <?php echo form_error('dokumen', '<small class="text-danger">', '</small>')?>
                     </div>
+                    <div class="form-group">
+                        <label><b>Berita Acara</b></label>
+                        <input type="file" class="form-control form-control-lg" id="beritaacara" name="beritaacara">
+                        <?php echo form_error('beritaacara', '<small class="text-danger">', '</small>')?>
+                    </div>
 
                     <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
                     <!-- <button type="reset" class="btn btn-secondary">Reset</a></button>&nbsp &nbsp -->
