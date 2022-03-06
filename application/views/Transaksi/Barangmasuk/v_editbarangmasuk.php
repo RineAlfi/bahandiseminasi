@@ -23,7 +23,7 @@
                     </div> -->
                     <div class="form-group">
                         <label><b>Nama Barang</b></label>
-                        <select name="barang_id" id="barang_id" class="form-control" required>
+                        <select name="barang_id" id="barang_id" class="form-control" disabled>
                             <option value="" selected disabled>--Pilih Nama Barang--</option>
                             <?php foreach($barang as $b) : ?>
                                 <option <?php echo $barangmasuk['barang_id'] == $b['id_barang'] ? 'selected' : '';?> <?php echo set_select('barang_id', $b['id_barang']) ?> value="<?php echo $b['id_barang'] ?>"><?php echo $b['nama_barang'] ?></option> 

@@ -21,7 +21,7 @@
 </head>
 <body>
     <!-- <center> -->
-        <table border="1" width="100%">
+        <table width="100%">
             <tr>
                 <td><img src="<?= base_url('assets'); ?>/images/logo.png" width="90" height="90"></td>
                 <td width="100%">
@@ -39,14 +39,13 @@
                 <td colspan="2"><hr></td>
             </tr>
         </table>
-        <table border="1" width="100%">
+        <table width="100%">
             <tr>
                 <td class=text>Bogor, <?php echo date('d M Y');?></td>
             </tr>
         </table>
         <br>
-        <br>
-        <table border="1" width="100%">
+        <table width="100%">
             <tr>
                 <td>
                     <center>
@@ -57,48 +56,45 @@
             </tr>
         </table>
         <br>
-        <table border="1" width="100%">
+        <table width="100%">
             <tr>
                 <td width="100">Telah diterima dari: </td>
                 <td>Balai Penelitian Agroklimat dan Hidrologi</td>
             </tr>
         </table>
-        <table border="1" width="100%">
+        <table width="100%">
             <tr>
                 <td width="100">Kepada&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </td>
             </tr>
         </table>
-        <table border="1" width="100%">
+        <table width="100%">
             <tr>
                 <td width="100">Bahan Diseminasi&nbsp;: </td>
+                <td><?php echo $detail->nama_barang?> <?php echo $detail->jumlah_keluar?> <?php echo $detailbarang->nama_satuan?></td>
+                <!-- <td width="20"></?php echo $detail->jumlah_keluar?></td> -->
+                <!-- <td width="50"></?php echo $detailbarang->nama_satuan?></td> -->
             </tr>
+
         </table>
-        <!-- <table border="1" width="100%">
-            </?php foreach ($barangkeluar as $dt): ?>
-            <tr>
-                <td width="100"></?php echo $dt->nama_barang?></td>
-            </tr>
-        </table> -->
-        <table border="1" width="100%">
+        <table width="100%">
             <tr>
                 <td width="100">Diserahkan pada&nbsp;&nbsp;&nbsp;: </td>
+                <td><?php echo $detail->tanggal_keluar?></td>
+            </tr>
+        </table>
+        <table width="100%">
+            <tr>
+                <td width="100">Keterangan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </td>
+                <td><?php echo $detail->keterangan?></td>
             </tr>
         </table>
         <br>
         <br>
-        <!-- <table border="1" width="100%">
+        <table width="100%">
             <tr>
-                <td width="100">Diserahkan pada&nbsp;: </td>
-            </tr>
-        </table>
-        <br>
-        <br>
-        <br> -->
-        <table border="1" width="100%">
-            <tr>
-                <td width="25"class="text2">Pemberi<br><br><br><br><hr> </td>
+                <td width="25"class="text2">Yang Menyerahkan<br><br><br><br><br><br><br><hr> </td>
                 <td width="50"></td>
-                <td width="25" class="text2">Penerima<br><br><br><br><hr> </td>
+                <td width="25" class="text2">Yang Menerima<br><br><br><br><br><br><br><hr> </td>
             </tr>
         </table>
 

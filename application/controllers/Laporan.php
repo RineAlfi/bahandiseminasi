@@ -41,61 +41,39 @@ class Laporan extends CI_Controller
         }
     }
 
-    // private function _cetak($data, $table_, $tanggal)
-    // {
-    //     $this->load->library('CustomPDF');
-    //     $table = $table_ == 'barang_masuk' ? 'Barang Masuk' : 'Barang Keluar';
+    private function _cetak($data, $table_, $tanggal)
+    {
+        $this->load->library('CustomPDF');
+        $table = $table_ == 'barang_masuk' ? 'Barang Masuk' : 'Barang Keluar'; 'Barang Kembali';
 
-    //     $pdf = new FPDF();
-    //     $pdf->AddPage('P', 'Letter');
-    //     $pdf->SetFont('Times', 'B', 16);
-    //     $pdf->Cell(190, 7, 'Laporan ' . $table, 0, 1, 'C');
-    //     $pdf->SetFont('Times', '', 10);
-    //     $pdf->Cell(190, 4, 'Tanggal : ' . $tanggal, 0, 1, 'C');
-    //     $pdf->Ln(10);
+        // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+        $this->load->library('pdfgenerator');
+        
+        // title dari pdf
+        $this->data['title_pdf'] = 'Laporan Transaksi Bahan Diseminasi';
+        
+        // filename dari pdf ketika didownload
+        $file_pdf = 'Laporan_Transaksi';
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
+        
+		$html = $this->load->view('Laporan/v_laporan',$this->data, true);	    
+        
+        // run dompdf
+        // $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
 
-    //     $pdf->SetFont('Arial', 'B', 10);
+        // Ambil Data Barang Keluar
+        // $data['barangkeluar'] = $this->Barangkeluar_m->getBarangKeluar();
+        // $data['detail'] = $detail;
+        // $barang_id = $detail->barang_id;
+        // $ket1 = 'jenis.id_jenis = barang.jenis_id';
+        // $ket2 = 'satuan.id = barang.satuan_id';
+        // $ket3 = 'barang.id_barang';
+        // $detailbarang = $this->Barangkeluar_m->join3('barang', 'jenis', 'satuan', $ket1, $ket2, $ket3, $barang_id);
+        // $data['detailbarang'] = $detailbarang;
+        // var_dump($data['detail']);
 
-    //     if ($table_ == 'barang_masuk') :
-    //         $pdf->Cell(10, 7, 'No.', 1, 0, 'C');
-    //         $pdf->Cell(25, 7, 'Tgl Masuk', 1, 0, 'C');
-    //         $pdf->Cell(35, 7, 'ID Transaksi', 1, 0, 'C');
-    //         $pdf->Cell(55, 7, 'Nama Barang', 1, 0, 'C');
-    //         $pdf->Cell(40, 7, 'Supplier', 1, 0, 'C');
-    //         $pdf->Cell(30, 7, 'Jumlah Masuk', 1, 0, 'C');
-    //         $pdf->Ln();
-
-    //         $no = 1;
-    //         foreach ($data as $d) {
-    //             $pdf->SetFont('Arial', '', 10);
-    //             $pdf->Cell(10, 7, $no++ . '.', 1, 0, 'C');
-    //             $pdf->Cell(25, 7, $d['tanggal_masuk'], 1, 0, 'C');
-    //             $pdf->Cell(35, 7, $d['id_barang_masuk'], 1, 0, 'C');
-    //             $pdf->Cell(55, 7, $d['nama_barang'], 1, 0, 'L');
-    //             $pdf->Cell(40, 7, $d['nama_supplier'], 1, 0, 'L');
-    //             $pdf->Cell(30, 7, $d['jumlah_masuk'] . ' ' . $d['nama_satuan'], 1, 0, 'C');
-    //             $pdf->Ln();
-    //         } else :
-    //         $pdf->Cell(10, 7, 'No.', 1, 0, 'C');
-    //         $pdf->Cell(25, 7, 'Tgl Keluar', 1, 0, 'C');
-    //         $pdf->Cell(35, 7, 'ID Transaksi', 1, 0, 'C');
-    //         $pdf->Cell(95, 7, 'Nama Barang', 1, 0, 'C');
-    //         $pdf->Cell(30, 7, 'Jumlah Keluar', 1, 0, 'C');
-    //         $pdf->Ln();
-
-    //         $no = 1;
-    //         foreach ($data as $d) {
-    //             $pdf->SetFont('Arial', '', 10);
-    //             $pdf->Cell(10, 7, $no++ . '.', 1, 0, 'C');
-    //             $pdf->Cell(25, 7, $d['tanggal_keluar'], 1, 0, 'C');
-    //             $pdf->Cell(35, 7, $d['id_barang_keluar'], 1, 0, 'C');
-    //             $pdf->Cell(95, 7, $d['nama_barang'], 1, 0, 'L');
-    //             $pdf->Cell(30, 7, $d['jumlah_keluar'] . ' ' . $d['nama_satuan'], 1, 0, 'C');
-    //             $pdf->Ln();
-    //         }
-    //     endif;
-
-    //     $file_name = $table . ' ' . $tanggal;
-    //     $pdf->Output('I', $file_name);
-    // }
+    }
 }

@@ -76,6 +76,7 @@ class Barangkembali_m extends CI_model
         $this->db->select('*');
         $this->db->from('barang_kembali');
         $this->db->join('barang_keluar', 'barang_keluar.id_barangkeluar = barang_kembali.barang_idkeluar', 'inner');
+        $this->db->order_by('id_barangkembali', 'DESC');
         // $this->db->where($ket, $param);
         $query = $this->db->get();
         return $query->result();

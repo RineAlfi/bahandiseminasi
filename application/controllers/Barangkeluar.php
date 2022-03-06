@@ -225,4 +225,39 @@ class Barangkeluar extends CI_Controller {
 		redirect('barangkeluar');
 	}
 
+    public function pdf($id_barangkeluar)
+    {
+
+        //Ambil Data Barang Keluar
+        // $data['id_barangkeluar'] = $data['id_barangkeluar']
+        $detail = $this->Barangkeluar_m->detail_data($id_barangkeluar);
+        $this->data['detail'] = $detail;
+        $barang_id = $detail->barang_id;
+        $ket1 = 'jenis.id_jenis = barang.jenis_id';
+        $ket2 = 'satuan.id = barang.satuan_id';
+        $ket3 = 'barang.id_barang';
+        $detailbarang = $this->Barangkeluar_m->join3('barang', 'jenis', 'satuan', $ket1, $ket2, $ket3, $barang_id);
+        $this->data['detailbarang'] = $detailbarang;
+        // var_dump($data['detail']);
+
+        // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+        $this->load->library('pdfgenerator');
+        
+        // title dari pdf
+        $this->data['title_pdf'] = 'Berita Acara Bahan Diseminasi';
+        
+        // filename dari pdf ketika didownload
+        $file_pdf = 'berita_acara_barang_diseminasi';
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
+        
+		$html=$this->load->view('pdf/v_beritaacara', $this->data, true);	    
+        
+        // run dompdf
+        $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
+
+    }
+
 }

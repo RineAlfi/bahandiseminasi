@@ -24,7 +24,7 @@
                     </div> -->
                     <div class="form-group">
                         <label><b>Nama Barang</b></label>
-                        <select name="barang_id" id="barang_id" class="form-control">
+                        <select name="barang_id" id="barang_id" class="form-control" disabled>
                             <option value="" selected disabled>--Pilih Nama Barang--</optiion>
                             <?php foreach($barang as $b) : ?>
                                 <option <?php echo $barangkeluar['barang_id'] == $b['id_barang'] ? 'selected' : '';?> <?php echo set_select('barang_id', $b['id_barang']) ?> value="<?php echo $b['id_barang'] ?>"><?php echo $b['nama_barang'] ?></option> 
