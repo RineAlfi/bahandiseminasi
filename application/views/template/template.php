@@ -126,7 +126,7 @@
                                 <i class="ti ti-settings"></i>
                                 Settings
                             </a> -->
-                            <a class="dropdown-item" href="<?php echo base_url(); ?>masuk">
+                            <a class="dropdown-item" href="<?php echo base_url(); ?>masuk/keluar">
                                 <i class="ti ti-logout"></i>
                                 Logout
                             </a>

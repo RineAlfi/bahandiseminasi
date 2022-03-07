@@ -5,8 +5,9 @@ class Jenis extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+        cekmasuk();
+
         $this->load->Model('Jenis_m');
-        $this->load->helper('url');
     }
 
     function index()

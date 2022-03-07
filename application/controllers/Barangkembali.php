@@ -6,6 +6,7 @@ class Barangkembali extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        cekmasuk();
 
         $this->load->model('Barangkembali_m');
         $this->load->library('form_validation', 'upload');

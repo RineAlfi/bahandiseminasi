@@ -10,6 +10,8 @@ class Barangmasuk extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        cekmasuk();
+        
         $this->load->model('Barangmasuk_m');
         $this->load->model('Databarang_m');
         $this->load->library('form_validation', 'upload');
@@ -47,6 +49,8 @@ class Barangmasuk extends CI_Controller {
             $this->load->view('Transaksi/Barangmasuk/v_tambahbarangmasuk', $data);
             $this->load->view('template/footer', $data);
         } else {
+            $id_barangmasuk = $this->Barangmasuk_m->idsm();
+            
             $foto = $_FILES['foto']['name'];
             if ($foto) {
                 $config['upload_path'] = './assets/file/Barangmasuk';
@@ -61,67 +65,57 @@ class Barangmasuk extends CI_Controller {
             } else {
                 $foto = 'default.png';
             }
-            
-            $dokumen = $_FILES['dokumen']['name'];
-            if ($dokumen) {
+
+            $data = [];
+            $count = count($_FILES['files']['name']);
+          
+            for($i=0;$i<$count;$i++){
+              if(!empty($_FILES['files']['name'][$i])){
+          
+                $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+        
                 $config['upload_path'] = './assets/file/Barangmasuk';
                 $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
-                $config['max_size']     = '30000';
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('dokumen')) {
-                    $dokumen = $this->upload->data('file_name');
-                } else {
-                    echo "Unggah file gagal!";
+                $config['max_size'] = '5000';
+                $config['file_name'] = $_FILES['files']['name'][$i];
+         
+                $this->load->library('upload',$config); 
+                $this->upload->initialize($config);
+                $id_barangmasuk = $this->Barangmasuk_m->idsm();
+                if($this->upload->do_upload('file')){
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+                    $data1[$i] = [
+                            'id_transaksi' =>$id_barangmasuk,
+                            'nama_dokumen' => $filename,
+                        ];
+                        // var_dump($data1[$x]);
+                    $this->Barangmasuk_m->input_data($data1[$i], 'detail_dokumen');
+                    // var_dump($filename);
                 }
-            } else {
+              }
             }
-            // $dokumen = $_FILES['dokumen']['name'];
-            // $jumlahData = count($_FILES['dokumen']['name']); //Menghitung jumlah file yang masuk
-            // for ($i=0; $i < $jumlahData ; $i++);
-            //     isset ($_FILES['file']['name'])     == isset ($_FILES['dokumen']['name'][$i]);
-            //     isset ($_FILES['file']['type'])     == isset ($_FILES['dokumen']['type'][$i]);
-            //     isset ($_FILES['file']['tmp_name']) == isset ($_FILES['dokumen']['tmp_name'][$i]);
-            //     isset ($_FILES['file']['size'])     == isset ($_FILES['dokumen']['size'][$i]);
-            //     // $dokumen = $_FILES['dokumen']['name'];
-            //     // if ($dokumen) {
-            //     $config['upload_path'] = './assets/dokumen/barangmasuk';
-            //     $config['allowed_types'] = 'jepg|jpg|png|pdf|docx';
-            //     // $config['max_size']     = '3000';
-            //     $this->load->library('upload', $config);
-            //     if ($this->upload->do_upload('file')) {
-            //         $fileData = $this->upload->data(); // Lakukan Upload Data
-            //         $uploadData[$i]['dokumen'] = $fileData['file_name'];
-            //     } 
-                // else {
-                //     echo "Unggah file gagal!";
-                // }
-            // endfor;
-
-            // if($uploadData !== null){
-            //     //Insert ke db
-            //       $insert = $this->Barangmasuk_m->upload($uploadData);
-
-            //       if($insert){
-            //           echo " <a href='".base_url()."'> Kembali </a><br> Berhasil Upload ";
-            //       } else{
-            //           echo "Gagal Upload!"
-            //       }
-            // }
-            $data = [
+        
+            $databm = [
+                'id_barangmasuk' => $id_barangmasuk,
                 'tanggal_masuk' => $this->input->post('tanggal_masuk'),
                 'barang_id' => $this->input->post('barang_id'),
                 'jumlah_masuk' => $this->input->post('jumlah_masuk'),
                 'foto' => $foto,
-                'dokumen' => $dokumen,
+                // 'dokumen' => $dokumen,
                 'keterangan' => $this->input->post('keterangan')
             ];
-            // var_dump($data);
-            $this->Barangmasuk_m->input_data($data, 'barang_masuk');
+            // echo '<br>';
+            // var_dump($jumlahData, $data);
+            $this->Barangmasuk_m->input_data($databm, 'barang_masuk');
             // $input = $this->input->post(null, true);
             // $insert = $this->Barangmasuk_m->insert('barang_masuk', $input);
             $this->session->set_flashdata('sukses', 'Data Barang Masuk Berhasil Ditambahkan');
             redirect('barangmasuk');
-            // }
         }
     }
     

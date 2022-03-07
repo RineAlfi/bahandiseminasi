@@ -20,6 +20,10 @@ class Barangmasuk_m extends CI_model
         return $batch ? $this->db->insert_batch($table, $data) : $this->db->insert($table, $data);
     }
 
+    public function upload($data = array()){
+        return $this->db->insert_batch('barang_masuk', $data);
+    }
+
     public function getDetail($id)
 	{
 		return $this->db->where('id_barangmasuk', $id)->get('barang_masuk')->row();
@@ -92,6 +96,22 @@ class Barangmasuk_m extends CI_model
     public function detailupdate($table, $ket){
         $query = $this->db->get_where($table, $ket)->row();
         return $query;
+    }
+
+    public function idsm()
+    {
+        $sql = "SELECT MAX(MID(id_barangmasuk,7,3)) AS nomasuk FROM barang_masuk
+                WHERE MID(id_barangmasuk,3,4) = DATE_FORMAT(CURDATE(), '%y%m')";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $nom = ((int)$row->nomasuk) + 1;
+            $no = sprintf("%'.03d", $nom);
+        } else {
+            $no = "001";
+        }
+        $id_barangmasuk = "BM" .date('ym') . $no;
+        return $id_barangmasuk;
     }
 
 }

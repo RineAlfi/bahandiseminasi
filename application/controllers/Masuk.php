@@ -12,13 +12,10 @@ class Masuk extends CI_Controller
 
     public function index()
     {
-        // if ($this->session->userdata('email')) {
-        //     $jenis = $this->session->userdata('jenis');
-
-        //     if ($jenis == 'pegawai') {
-        //         redirect('bahandiseminasi/dashboard');
-        //     }
-        // }
+        if ($this->session->userdata('email')) {
+                redirect('satuan');
+            }
+        
 
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Kata Sandi', 'required');
@@ -61,9 +58,11 @@ class Masuk extends CI_Controller
     public function keluar()
     {
         $this->session->unset_userdata('email');
-        $this->session->unset_userdata('jenis');
+        // $this->session->unset_userdata('jenis');
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Berhasil keluar!  </div>');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Berhasil keluar!</div>');
         redirect('masuk');
     }
 

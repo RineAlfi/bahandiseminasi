@@ -5,8 +5,9 @@ class Satuan extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+        cekmasuk();
+
         $this->load->Model('Satuan_m');
-        $this->load->helper('url');
     }
     
     function index()
