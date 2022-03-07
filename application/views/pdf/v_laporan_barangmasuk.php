@@ -31,7 +31,7 @@
         </style>
     </head>
     <body>
-    <table border="1" width="100%">
+    <table width="100%">
             <tr>
                 <td><img src="<?= base_url('assets'); ?>/images/logo.png" width="90" height="90"></td>
                 <td width="100%">
@@ -50,56 +50,34 @@
             </tr>
         </table>
         <div style="text-align:center">
-            <h3> Laporan Transaksi</h3>
+            <h3> Laporan Transaksi Barang Masuk</h3>
+            <h5> <?php echo $mulai;?> - <?php echo $akhir;?></h5>
         </div>
         <table id="table">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Tanggal Masuk</th>
-                    <th>Nama Barang</th>
-                    <th>Jumlah Masuk</th>
-                    <th>Keterangan</th>
+                    <th style= "text-align: center;">No.</th>
+                    <th style= "text-align: center;">Tanggal Masuk</th>
+                    <th style= "text-align: center;">Nama Barang</th>
+                    <th style= "text-align: center;">Jumlah Masuk</th>
+                    <th style= "text-align: center;">Keterangan</th>
                 </tr>
-            </thead> -->
-            <!-- <thead>
+            </thead>
+
             <tbody>
-                <if ($table_ == 'barang_masuk') : >
-                    <thead>
+            <?php
+                $no = 1;
+                if ($query)
+                    foreach ($query as $bm) {
+                    ?>
                     <tr>
-                        <th>No.</th>
-                        <th>Tanggal Masuk</th>
-                        <th>Nama Barang</th>
-                        <th>Jumlah Masuk</th>
-                        <th>Keterangan</th>
+                        <td style= "text-align: center;"><?php echo $no++; ?></td>
+                        <td style= "text-align: left"><?php echo date('d-M-Y', strtotime($bm['tanggal_masuk'])) ?></td>
+                        <td style= "text-align: left"><?php echo $bm['nama_barang']; ?></td>
+                        <td style= "text-align: left"><?php echo $bm['jumlah_masuk'] . ' ' . $bm['nama_satuan']; ?></td>
+                        <td style= "text-align: left"><?php echo $bm['keterangan']; ?></td>
                     </tr>
-                    </thead>
-                <tr>
-                    <td width="100">Telah diterima dari: </td>
-                    <td>Balai Penelitian Agroklimat dan Hidrologi</td>
-                </tr>
-                </table>
-                <tr>
-                    <td scope="row">2</td>
-                    <td>Kopi Hitam</td>
-                    <td>Rp5.000,-</td>
-                    <td>1</td>
-                    <td>25 Oktober 2020, 16:01:03</td>
-                </tr>
-                <tr>
-                    <td scope="row">3</td>
-                    <td>Gorengan Bakwan</td>
-                    <td>Rp3.000,-</td>
-                    <td>3</td>
-                    <td>25 Oktober 2020, 15:01:02</td>
-                </tr>
-                <tr>
-                    <td scope="row">4</td>
-                    <td>Nasi uduk</td>
-                    <td>Rp14.000,-</td>
-                    <td>2</td>
-                    <td>25 Oktober 2020, 14:04:03</td>
-                </tr>
+                <?php } ?>
             </tbody>
         </table>
     </body>

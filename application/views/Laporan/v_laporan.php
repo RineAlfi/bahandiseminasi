@@ -16,21 +16,22 @@
                                 <div class="col-md-15">
                                     <div class="form-group">
                                     <label><b>Laporan Transaksi</b></label>
+                                    <form method="POST" action="<?php echo base_url('laporan') ?>">
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
+                                        <input type="radio" class="form-check-input" name="transaksi" id="barang_masuk" value="barang_masuk">
                                         Barang Masuk
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
+                                        <input type="radio" class="form-check-input" name="transaksi" id="barang_keluar" value="barang_keluar">
                                         Barang Keluar
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
+                                        <input type="radio" class="form-check-input" name="transaksi" id="barang_kembali" value="barang_kembali">
                                         Barang Kembali
                                         </label>
                                     </div>
@@ -64,10 +65,11 @@
                                         <!-- <input value="</?= set_value('tanggal'); ?>" name="tanggal" id="tanggal_laporan" type="date" name="tanggal_keluar" class="form-control"> -->
                                         <!-- ?php echo form_error('tanggal_keluar', '<div class="text-small text-danger"></div>') ?> -->
                                     </div>
-                                    <button type="button" class="btn btn-outline-primary btn-icon-text">
+                                    <button type="submit" class="btn btn-outline-primary btn-icon-text">
                                         Cetak
                                         <i class="ti ti-printer"></i>                                                                              
                                     </button>
+                                    </form>
                                 </div>
                                 </div>
                             </div>

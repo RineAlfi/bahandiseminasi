@@ -44,7 +44,7 @@ class Databarang_m extends CI_model
         $hsl=$this->db->select('*');
         $this->db->from('barang');
         $this->db->join('barang_masuk', 'barang_masuk.barang_id = barang.id_barang');
-        // $this->db->join('satuan', 'satuan.id = barang.satuan_id');
+        $this->db->join('satuan', 'satuan.id = barang.satuan_id');
         // $this->db->join('barang_masuk', 'barang_masuk.barang_id = barang.id_barang');
         return $hsl=$this->db->where('barang_id', $barang_id)->get()->row();
         if($hsl->num_rows()>0){
@@ -52,7 +52,7 @@ class Databarang_m extends CI_model
             $hasil=array(
                 'barang_id' => $data->barang_id,
                 'stok' => $data->stok,
-                'satuan' => $data->satuan_id,
+                'satuan' => $data->nama_satuan,
                 );
 			}
 		}

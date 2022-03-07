@@ -58,30 +58,3 @@
     </div>                   
 </div>
 </div>
-
-<!-- <script>
-    $(document).ready(function(){
-            $('#barang_id').on('input',function(){
-            
-            var barang_id=$(this).val();
-            $.ajax({
-                type : "POST",
-                url  : "</?php echo base_url('barang/get_barang')?>",
-                dataType : "JSON",
-                data : {barang_id: barang_id},
-                cache:false,
-                success: function(data){
-                    $.each(data,function(barang_id, stok){
-                        $('[name="stok"]').val(data.stok);
-                        // $('[name="harga"]').val(data.harga);
-                        // $('[name="satuan"]').val(data.satuan);
-                        
-                    });
-                    
-                }
-            });
-            return false;
-        });
-
-    });
-	</script> -->
