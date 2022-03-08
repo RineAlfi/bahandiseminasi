@@ -46,11 +46,10 @@
                                 <th>Dokumen</th>
                                     <td>
                                     <?php
-                                        $no = 1;
                                         if ($dok)
                                             foreach ($dok as $detail) {
                                             ?>
-                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= base_url() ?>assets/file/Barangkembali/<?= $detail->nama_dokumen ?>" target="_blank">
+                                            <a class="btn btn-outline-primary btn-icon-text btn-sm" href="<?= base_url() ?>assets/file/Barangkembali/<?= $detail->nama_dokumen ?>" target="_blank">
                                                 <i class="ti ti-download"></i> <?= $detail->nama_dokumen; ?>
                                             </a>
                                     <?php } ?>

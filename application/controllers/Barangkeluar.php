@@ -207,6 +207,7 @@ class Barangkeluar extends CI_Controller {
                 echo "Unggah file gagal!";
             }
         } else {
+            $beritaacara = $detail->beritaacara;
         }
         $databk = [
             'tanggal_keluar' => $this->input->post('tanggal_keluar'),
@@ -237,7 +238,7 @@ class Barangkeluar extends CI_Controller {
         $ket = ['id_transaksi' => $id_barangkeluar];
         $data['dok'] = $this->Barangkeluar_m->get2('detail_dokumen', $ket);
 
-        // var_dump($detailbarang);
+        // var_dump($data['detailbarang']) ;
         $this->load->view('template/template', $data);
         $this->load->view('Transaksi/Barangkeluar/v_detailbarangkeluar', $data);
         $this->load->view('template/footer', $data);

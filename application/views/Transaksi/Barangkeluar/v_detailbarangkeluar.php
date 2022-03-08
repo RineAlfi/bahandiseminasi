@@ -15,6 +15,10 @@
                             <div class="col-lg-12 col-md-12 col-xs-9">
                             <table class="table table-no-bordered">
                                 <tr>
+                                    <th>ID Barang Keluar</th>
+                                    <td><?php echo $detail->id_barangkeluar?></td>
+                                </tr>
+                                <tr>
                                     <th>Tanggal Keluar</th>
                                     <td><?php echo $detail->tanggal_keluar?></td>
                                 </tr>
@@ -38,27 +42,26 @@
                                     <th>Keterangan</th>
                                     <td><?php echo $detail->keterangan?></td>
                                 </tr>
-                                <th>Dokumen</th>
+                                <th>Berita Acara</th>
                                     <td>
                                     <?php
-                                        $no = 1;
-                                        if ($dok)
-                                            foreach ($dok as $detail) {
-                                            ?>
-                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= base_url() ?>assets/file/Barangkeluar/<?= $detail->nama_dokumen ?>" target="_blank">
-                                                <i class="ti ti-download"></i> <?= $detail->nama_dokumen; ?>
+                                        if ($detail->beritaacara) { ?>
+                                            <a class="btn btn-outline-primary btn-icon-text btn-sm" href="<?= base_url() ?>assets/file/Barangkeluar/<?= $detail->beritaacara ?>" target="_blank">
+                                                <i class="ti ti-download"></i> <?= $detail->beritaacara; ?>
                                             </a>
                                     <?php } ?>
                                     </td>
                                 </tr>
-                                <th>Berita Acara</th>
+                                <th>Dokumen</th>
                                     <td>
-                                        <?php
-                                        if ($detail->beritaacara) { ?>
-                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= base_url() ?>assets/file/Barangkeluar/<?= $detail->beritaacara ?>" target="_blank">
-                                                <i class="ti ti-download"></i> <?= $detail->beritaacara; ?>
+                                    <?php
+                                        if ($dok)
+                                            foreach ($dok as $detail) {
+                                            ?>
+                                            <a class="btn btn-outline-primary btn-icon-text btn-sm" href="<?= base_url() ?>assets/file/Barangkeluar/<?= $detail->nama_dokumen ?>" target="_blank">
+                                                <i class="ti ti-download"></i> <?= $detail->nama_dokumen; ?>
                                             </a>
-                                        <?php } ?>
+                                    <?php } ?>
                                     </td>
                                 </tr>
                             </table>
