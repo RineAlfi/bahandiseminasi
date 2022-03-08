@@ -48,8 +48,8 @@
                         <?php echo form_error('foto', '<small class="text-danger">', '</small>')?>
                     </div>
                     <div class="form-group">
-                        <label><b>File</b></label>
-                        <input type="file" name="dokumen" value="<?php echo set_value('dokumen', $barangkeluar['dokumen']); ?>" name="dokumen" class="form-control">
+                        <label><b>Dokumen</b></label>
+                        <input type='file' class="form-control form-control-lg" id='files' name='files[]' multiple="">
                         <?php echo form_error('dokumen', '<small class="text-danger">', '</small>')?>
                     </div>
                     <div class="form-group">

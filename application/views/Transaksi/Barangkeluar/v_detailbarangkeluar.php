@@ -38,14 +38,17 @@
                                     <th>Keterangan</th>
                                     <td><?php echo $detail->keterangan?></td>
                                 </tr>
-                                <th>File</th>
+                                <th>Dokumen</th>
                                     <td>
-                                        <?php
-                                        if ($detail->dokumen) { ?>
-                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= base_url() ?>assets/file/Barangkeluar/<?= $detail->dokumen ?>" target="_blank">
-                                                <i class="ti ti-download"></i> <?= $detail->dokumen; ?>
+                                    <?php
+                                        $no = 1;
+                                        if ($dok)
+                                            foreach ($dok as $detail) {
+                                            ?>
+                                            <a class="btn btn-outline-primary btn-icon-text" href="<?= base_url() ?>assets/file/Barangkeluar/<?= $detail->nama_dokumen ?>" target="_blank">
+                                                <i class="ti ti-download"></i> <?= $detail->nama_dokumen; ?>
                                             </a>
-                                        <?php } ?>
+                                    <?php } ?>
                                     </td>
                                 </tr>
                                 <th>Berita Acara</th>

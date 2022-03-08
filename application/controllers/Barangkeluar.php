@@ -33,6 +33,8 @@ class Barangkeluar extends CI_Controller {
             $this->load->view('Transaksi/Barangkeluar/v_tambahbarangkeluar', $data);
             $this->load->view('template/footer', $data);
         } else {
+            $id_barangkeluar = $this->Barangkeluar_m->idbk();
+            
             $foto = $_FILES['foto']['name'];
             if ($foto) {
                 $config['upload_path'] = './assets/file/barangkeluar';
@@ -47,49 +49,50 @@ class Barangkeluar extends CI_Controller {
             } else {
                 $foto = 'default.png';
             }
-            
-            $dokumen = $_FILES['dokumen']['name'];
-            if ($dokumen) {
-                $config['upload_path'] = './assets/file/barangkeluar';
+
+            $data = [];
+            $count = count($_FILES['files']['name']);
+          
+            for($i=0;$i<$count;$i++){
+              if(!empty($_FILES['files']['name'][$i])){
+          
+                $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+        
+                $config['upload_path'] = './assets/file/Barangkeluar';
                 $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
-                $config['max_size']     = '30000';
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('dokumen')) {
-                    $dokumen = $this->upload->data('file_name');
-                } else {
-                    echo "Unggah file gagal!";
+                $config['max_size'] = '5000';
+                $config['file_name'] = $_FILES['files']['name'][$i];
+         
+                $this->load->library('upload',$config); 
+                $this->upload->initialize($config);
+                $id_barangkeluar = $this->Barangkeluar_m->idbk();
+                if($this->upload->do_upload('file')){
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+                    $data1[$i] = [
+                            'id_transaksi' => $id_barangkeluar,
+                            'nama_dokumen' => $filename,
+                        ];
+                    $this->Barangkeluar_m->input_data($data1[$i], 'detail_dokumen');
                 }
-            } else {
+              }
             }
-            // $jumlahData = count($_FILES['dokumen']['name']); //Menghitung jumlah file yang keluar
-            // for ($i=0; $i < $jumlahData ; $i++);
-            // isset ($dokumen['file']['name'])     == isset ($_FILES['dokumen']['name'][$i]);
-            // isset ($dokumen['file']['type'])     == isset ($_FILES['dokumen']['type'][$i]);
-            // isset ($dokumen['file']['tmp_name']) == isset ($_FILES['dokumen']['tmp_name'][$i]);
-            // isset ($dokumen['file']['size'])     == isset ($_FILES['dokumen']['size'][$i]);
-            // // $dokumen = $_FILES['dokumen']['name'];
-            // // if ($dokumen) {
-            // $config['upload_path'] = './assets/dokumen/barangkeluar';
-            // $config['allowed_types'] = 'jepg|jpg|png|pdf|docx';
-            // $config['max_size']     = '3000';
-            // $this->load->library('upload', $config);
-            // if ($this->upload->do_upload('dokumen')) {
-            //     $dokumen = $this->upload->data('file_name');
-            // } else {
-            //     echo "Unggah file gagal!";
-            // }
-            // // } else {
-            // // }
-            $data = [
+
+            $databk = [
+                'id_barangkeluar' => $id_barangkeluar,
                 'tanggal_keluar' => $this->input->post('tanggal_keluar'),
                 'barang_id' => $this->input->post('barang_id'),
                 'jumlah_keluar' => $this->input->post('jumlah_keluar'),
                 'foto' => $foto,
-                'dokumen' => $dokumen,
+                // 'dokumen' => $dokumen,
                 'keterangan' => $this->input->post('keterangan')
             ];
             // var_dump($data);
-            $this->Barangkeluar_m->input_data($data, 'barang_keluar');
+            $this->Barangkeluar_m->input_data($databk, 'barang_keluar');
             $this->session->set_flashdata('sukses', 'Data Barang Keluar Berhasil Ditambahkan');
             redirect('barangkeluar');
         }
@@ -139,64 +142,83 @@ class Barangkeluar extends CI_Controller {
         $id_barangkeluar = $this->input->post('id');
         $ket = ['id_barangkeluar' => $id_barangkeluar];
         $detail = $this->Barangkeluar_m->detailupdate('barang_keluar', $ket);
+        $ket2 = ['id_transaksi' => $id_barangkeluar];
+        $this->Barangkeluar_m->hapus_data($ket2, 'detail_dokumen');
         $foto = $_FILES['foto']['name'];
-            if ($foto) {
-                $config['upload_path']   = './assets/file/Barangkeluar';
-                $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
-                $config['max_size']      = '3000';
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('foto')) {
-                    $foto_lama = $detail->foto;
-                    if($foto_lama != 'default.png'){
-                    unlink(FCPATH.'/assets/file/Barangkeluar/'.$foto_lama);
-                    }
-                    $foto = $this->upload->data('file_name');
-                } else {
-                    echo "Unggah file gagal!";
+        if ($foto) {
+            $config['upload_path']   = './assets/file/Barangkeluar';
+            $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
+            $config['max_size']      = '3000';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('foto')) {
+                $foto_lama = $detail->foto;
+                if($foto_lama != 'default.png'){
+                unlink(FCPATH.'/assets/file/Barangkeluar/'.$foto_lama);
                 }
+                $foto = $this->upload->data('file_name');
             } else {
-                $foto = $detail->foto;
+                echo "Unggah file gagal!";
             }
+        } else {
+            $foto = $detail->foto;
+        }
 
-            $dokumen = $_FILES['dokumen']['name'];
-            if ($dokumen) {
-                $config['upload_path']   = './assets/file/Barangkeluar';
-                $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
-                $config['max_size']      = '30000';
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('dokumen')) {
-                    $dokumen_lama = $detail->dokumen;
-                    $dokumen = $this->upload->data('file_name');
-                } else {
-                    echo "Unggah file gagal!";
-                }
-            } else {
-                $dokumen= $detail->dokumen;
+        $data = [];
+        $count = count($_FILES['files']['name']);
+        
+        for($i=0;$i<$count;$i++){
+            if(!empty($_FILES['files']['name'][$i])){
+        
+            $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+            $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+            $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+            $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+    
+            $config['upload_path'] = './assets/file/Barangkeluar';
+            $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
+            $config['max_size'] = '5000';
+            $config['file_name'] = $_FILES['files']['name'][$i];
+        
+            $this->load->library('upload',$config); 
+            $this->upload->initialize($config);
+            $id_barangkeluar = $this->Barangkeluar_m->idbk();
+            if($this->upload->do_upload('file')){
+                $uploadData = $this->upload->data();
+                $filename = $uploadData['file_name'];
+                $data1[$i] = [
+                        'id_transaksi' => $detail->id_barangkeluar,
+                        'nama_dokumen' => $filename,
+                    ];
+                $this->Barangkeluar_m->input_data($data1[$i], 'detail_dokumen');
             }
-            $beritaacara = $_FILES['beritaacara']['name'];
-            if ($beritaacara) {
-                $config['upload_path'] = './assets/file/barangkeluar';
-                $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
-                $config['max_size']     = '30000';
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('beritaacara')) {
-                    $beritaacara = $this->upload->data('file_name');
-                } else {
-                    echo "Unggah file gagal!";
-                }
-            } else {
             }
-        $data = [
+        }
+
+        $beritaacara = $_FILES['beritaacara']['name'];
+        if ($beritaacara) {
+            $config['upload_path'] = './assets/file/barangkeluar';
+            $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
+            $config['max_size']     = '30000';
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('beritaacara')) {
+                $beritaacara = $this->upload->data('file_name');
+            } else {
+                echo "Unggah file gagal!";
+            }
+        } else {
+        }
+        $databk = [
             'tanggal_keluar' => $this->input->post('tanggal_keluar'),
-            'barang_id' => $this->input->post('barang_id'),
+            'barang_id' => $detail->barang_id,
             'jumlah_keluar' => $this->input->post('jumlah_keluar'),
             'keterangan' => $this->input->post('keterangan'),
             'foto' => $foto,
-            'dokumen' => $dokumen,
+            // 'dokumen' => $dokumen,
             'beritaacara' => $beritaacara
         ];
         // var_dump($data);
-        $this->Barangkeluar_m->update('barang_keluar', $data, $ket);
+        $this->Barangkeluar_m->update('barang_keluar', $databk, $ket);
         $this->session->set_flashdata('sukses', 'Data Barang Keluar Berhasil Diubah');
         redirect('barangkeluar');
     }
@@ -212,6 +234,9 @@ class Barangkeluar extends CI_Controller {
         $ket3 = 'barang.id_barang';
         $detailbarang = $this->Barangkeluar_m->join3('barang', 'jenis', 'satuan', $ket1, $ket2, $ket3, $barang_id);
         $data['detailbarang'] = $detailbarang;
+        $ket = ['id_transaksi' => $id_barangkeluar];
+        $data['dok'] = $this->Barangkeluar_m->get2('detail_dokumen', $ket);
+
         // var_dump($detailbarang);
         $this->load->view('template/template', $data);
         $this->load->view('Transaksi/Barangkeluar/v_detailbarangkeluar', $data);

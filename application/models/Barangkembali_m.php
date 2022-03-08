@@ -21,6 +21,11 @@ class Barangkembali_m extends CI_model
 		return $this->db->where('id_barangkembali', $id)->get('barang_kembali')->row();
 	}
 
+    public function get2($table, $ket)
+    {
+        return $this->db->get_where($table, $ket)->result();
+    }
+
     function input_data($data, $table)
 	{
 		$this->db->insert($table, $data);
@@ -121,6 +126,22 @@ class Barangkembali_m extends CI_model
         $this->db->select_sum($field);
         $this->db->where('barang_idkeluar', $param);
         return $this->db->get($table)->row_array()[$field];
+    }
+
+    public function idbkm()
+    {
+        $sql = "SELECT MAX(MID(id_barangkembali,8,3)) AS nokembali FROM barang_kembali
+                WHERE MID(id_barangkembali,4,4) = DATE_FORMAT(CURDATE(), '%y%m')";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $nom = ((int)$row->nokembali) + 1;
+            $no = sprintf("%'.03d", $nom);
+        } else {
+            $no = "001";
+        }
+        $id_barangkembali = "BKM" .date('ym') . $no;
+        return $id_barangkembali;
     }
 
      // function get_all_data()

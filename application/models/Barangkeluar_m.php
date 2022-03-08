@@ -15,6 +15,11 @@ class Barangkeluar_m extends CI_model
         $query = $this->db->get_where($table, $where)->row();
         return $query;
     }
+     
+    public function get2($table, $ket)
+    {
+        return $this->db->get_where($table, $ket)->result();
+    }
 
     public function getDetail($id)
 	{
@@ -82,7 +87,6 @@ class Barangkeluar_m extends CI_model
 
     function join2($table, $table2, $ktabel21, $ket, $param)
     {
-
         $this->db->select('*');
         $this->db->from($table);
         $this->db->join($table2, $ktabel21, 'left');
@@ -106,6 +110,22 @@ class Barangkeluar_m extends CI_model
     public function detailupdate($table, $ket){
         $query = $this->db->get_where($table, $ket)->row();
         return $query;
+    }
+
+    public function idbk()
+    {
+        $sql = "SELECT MAX(MID(id_barangkeluar,7,3)) AS nokeluar FROM barang_keluar
+                WHERE MID(id_barangkeluar,3,4) = DATE_FORMAT(CURDATE(), '%y%m')";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $nom = ((int)$row->nokeluar) + 1;
+            $no = sprintf("%'.03d", $nom);
+        } else {
+            $no = "001";
+        }
+        $id_barangkeluar = "BK" .date('ym') . $no;
+        return $id_barangkeluar;
     }
 
 }

@@ -48,8 +48,9 @@
                         <?php echo form_error('fotokembali', '<small class="text-danger">', '</small>')?>
                     </div>
                     <div class="form-group">
-                        <label><b>File</b></label>
-                        <input type="file" name="dokumenkembali" value="<?php echo set_value('dokumen', $barangkembali->dokumenkembali); ?>" name="dokumenkembali" class="form-control">
+                        <label><b>Dokumen</b></label>
+                        <input type='file' class="form-control form-control-lg" id='files' name='files[]' multiple="">
+                        <!-- <input type="file" name="dokumenkembali" value="</?php echo set_value('dokumen', $barangkembali->dokumenkembali); ?>" name="dokumenkembali" class="form-control"> -->
                         <?php echo form_error('dokumenkembali', '<small class="text-danger">', '</small>')?>
                     </div>
 

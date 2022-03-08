@@ -10,6 +10,11 @@ class Barangmasuk_m extends CI_model
         }
     }
 
+    public function get2($table, $ket)
+    {
+        return $this->db->get_where($table, $ket)->result();
+    }
+
     function input_data($data, $table)
 	{
 		$this->db->insert($table, $data);

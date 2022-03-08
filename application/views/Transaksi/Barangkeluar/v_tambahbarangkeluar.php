@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label><b>Dokumen</b></label>
-                                    <input type="file" class="form-control form-control-lg" id="dokumen" name="dokumen">
+                                    <input type='file' class="form-control form-control-lg" id='files' name='files[]' multiple="">
                                     <?php echo form_error('dokumen', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                                 <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
