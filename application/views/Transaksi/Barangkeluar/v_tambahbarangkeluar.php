@@ -36,9 +36,9 @@
                                     <div class="col-md-15">
                                         <div class="input-group">
                                             <input value="<?php echo set_value('jumlah_keluar');?>" name="jumlah_keluar" id="jumlah_keluar" type="number" class="form-control">
-                                            <!-- <div class="input-group-append">
-                                                <span class="input-group-text" id="satuan" >Satuan</span>
-                                            </div> -->
+                                            <div class="input-group-append">
+                                            <span><input readonly="readonly" id="satuan" name="satuan" type="text" class="form-control" placeholder=Satuan ></span>
+                                            </div>
                                         </div>
                                         <?php echo form_error('jumlah_keluar', '<small class="text-danger">', '</small>'); ?>
                                     </div>
@@ -82,12 +82,12 @@
             data : {barang_id: barang_id},
             cache:false,
             success: function(data){
-                $.each(data,function(barang_id, stok, satuan){
+                $.each(data,function(barang_id, stok, nama_satuan){
                     // $('[name="nama"]').val(data.nama_barang);
 
                     $('[name="barang_id"]').val(data.barang_id);
                     $('[name="stok"]').val(data.stok);
-                    $('[name="satuan"]').val(data.satuan);
+                    $('[name="satuan"]').val(data.nama_satuan);
                     
                 });
                 

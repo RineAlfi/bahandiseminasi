@@ -69,7 +69,7 @@ class Barangkeluar extends CI_Controller {
          
                 $this->load->library('upload',$config); 
                 $this->upload->initialize($config);
-                $id_barangkeluar = $this->Barangkeluar_m->idbk();
+                // $id_barangkeluar = $this->Barangkeluar_m->idbk();
                 if($this->upload->do_upload('file')){
                     $uploadData = $this->upload->data();
                     $filename = $uploadData['file_name'];
@@ -143,7 +143,7 @@ class Barangkeluar extends CI_Controller {
         $ket = ['id_barangkeluar' => $id_barangkeluar];
         $detail = $this->Barangkeluar_m->detailupdate('barang_keluar', $ket);
         $ket2 = ['id_transaksi' => $id_barangkeluar];
-        $this->Barangkeluar_m->hapus_data($ket2, 'detail_dokumen');
+        
         $foto = $_FILES['foto']['name'];
         if ($foto) {
             $config['upload_path']   = './assets/file/Barangkeluar';
@@ -165,36 +165,40 @@ class Barangkeluar extends CI_Controller {
 
         $data = [];
         $count = count($_FILES['files']['name']);
+        $id_barangkeluar = $this->Barangkeluar_m->idbk();
+        if($count > 0){
+            $this->Barangkeluar_m->hapus_data($ket2, 'detail_dokumen');
+
+            for($i=0;$i<$count;$i++){
+                if(!empty($_FILES['files']['name'][$i])){
+            
+                $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
         
-        for($i=0;$i<$count;$i++){
-            if(!empty($_FILES['files']['name'][$i])){
-        
-            $_FILES['file']['name'] = $_FILES['files']['name'][$i];
-            $_FILES['file']['type'] = $_FILES['files']['type'][$i];
-            $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
-            $_FILES['file']['error'] = $_FILES['files']['error'][$i];
-            $_FILES['file']['size'] = $_FILES['files']['size'][$i];
-    
-            $config['upload_path'] = './assets/file/Barangkeluar';
-            $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
-            $config['max_size'] = '5000';
-            $config['file_name'] = $_FILES['files']['name'][$i];
-        
-            $this->load->library('upload',$config); 
-            $this->upload->initialize($config);
-            $id_barangkeluar = $this->Barangkeluar_m->idbk();
-            if($this->upload->do_upload('file')){
-                $uploadData = $this->upload->data();
-                $filename = $uploadData['file_name'];
-                $data1[$i] = [
-                        'id_transaksi' => $detail->id_barangkeluar,
-                        'nama_dokumen' => $filename,
-                    ];
-                $this->Barangkeluar_m->input_data($data1[$i], 'detail_dokumen');
-            }
+                $config['upload_path'] = './assets/file/Barangkeluar';
+                $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
+                $config['max_size'] = '5000';
+                $config['file_name'] = $_FILES['files']['name'][$i];
+            
+                $this->load->library('upload',$config); 
+                $this->upload->initialize($config);
+                
+                if($this->upload->do_upload('file')){
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+                    $data1[$i] = [
+                            'id_transaksi' => $detail->id_barangkeluar,
+                            'nama_dokumen' => $filename,
+                        ];
+                    $this->Barangkeluar_m->input_data($data1[$i], 'detail_dokumen');
+                }
+                }
             }
         }
-
+        
         $beritaacara = $_FILES['beritaacara']['name'];
         if ($beritaacara) {
             $config['upload_path'] = './assets/file/barangkeluar';

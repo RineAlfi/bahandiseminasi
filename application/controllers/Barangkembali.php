@@ -52,6 +52,7 @@ class Barangkembali extends CI_Controller {
 
         } else {
             $id_barangkembali = $this->Barangkembali_m->idbkm();
+            
             $foto = $_FILES['fotokembali']['name'];
             if ($foto) {
                 $config['upload_path'] = './assets/file/barangkembali';
@@ -175,8 +176,9 @@ class Barangkembali extends CI_Controller {
             } else {
                 $foto = $detail->fotokembali;
             }
-
+            $data = [];
             $count = count($_FILES['files']['name']);
+            $id_barangkembali = $this->Barangkembali_m->idbkm();
           
             for($i=0;$i<$count;$i++){
               if(!empty($_FILES['files']['name'][$i])){
@@ -194,7 +196,7 @@ class Barangkembali extends CI_Controller {
          
                 $this->load->library('upload',$config); 
                 $this->upload->initialize($config);
-                $id_barangkembali = $this->Barangkembali_m->idbkm();
+                // $id_barangkembali = $this->Barangkembali_m->idbkm();
                 if($this->upload->do_upload('file')){
                     $uploadData = $this->upload->data();
                     $filename = $uploadData['file_name'];

@@ -85,7 +85,7 @@ class Barangmasuk extends CI_Controller {
          
                 $this->load->library('upload',$config); 
                 $this->upload->initialize($config);
-                $id_barangmasuk = $this->Barangmasuk_m->idsm();
+                // $id_barangmasuk = $this->Barangmasuk_m->idsm();
                 if($this->upload->do_upload('file')){
                     $uploadData = $this->upload->data();
                     $filename = $uploadData['file_name'];
@@ -159,6 +159,7 @@ class Barangmasuk extends CI_Controller {
         }
         $data = [];
         $count = count($_FILES['files']['name']);
+        $id_barangmasuk = $this->Barangmasuk_m->idsm();
         
         for($i=0;$i<$count;$i++){
             if(!empty($_FILES['files']['name'][$i])){
@@ -176,7 +177,7 @@ class Barangmasuk extends CI_Controller {
         
             $this->load->library('upload',$config); 
             $this->upload->initialize($config);
-            $id_barangmasuk = $this->Barangmasuk_m->idsm();
+            // $id_barangmasuk = $this->Barangmasuk_m->idsm();
             if($this->upload->do_upload('file')){
                 $uploadData = $this->upload->data();
                 $filename = $uploadData['file_name'];
