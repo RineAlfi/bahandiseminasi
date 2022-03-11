@@ -20,7 +20,6 @@
     </style>
 </head>
 <body>
-    <!-- <center> -->
         <table width="100%">
             <tr>
                 <td><img src="<?= base_url('assets'); ?>/images/logo.png" width="90" height="90"></td>
@@ -71,8 +70,6 @@
             <tr>
                 <td width="100">Bahan Diseminasi&nbsp;: </td>
                 <td><?php echo $detail->nama_barang?> <?php echo $detail->jumlah_keluar?> <?php echo $detailbarang->nama_satuan?></td>
-                <!-- <td width="20"></?php echo $detail->jumlah_keluar?></td> -->
-                <!-- <td width="50"></?php echo $detailbarang->nama_satuan?></td> -->
             </tr>
 
         </table>
@@ -97,7 +94,5 @@
                 <td width="25" class="text2">Yang Menerima<br><br><br><br><br><br><br><hr> </td>
             </tr>
         </table>
-
-    <!-- </center> -->
 </body>
 </html>

@@ -7,8 +7,7 @@
                     <h3 class="m-0 font-weight-bold">Data Barang kembali</h3><br>
                     <div class="flash-data" id="flash2" data-flash="<?= $this->session->flashdata('sukses'); ?>"></div>
                     <div class="flash-data" id="flash" data-flash="<?= $this->session->flashdata('error'); ?>"></div>
-                    <!-- <div class="col-md-4 grid-margin">
-                    <a href="<?//php echo base_url() ?>barangkembali/tambah" class="btn btn-success btn-md"><i class="ti ti-plus"></i> Tambah Barang kembali</a></div> -->
+                    <!-- <div class="col-md-4 grid-margin">-->
                     <div class="col-md-12 grid-margin">
                         <div class="card shadow mb-12">
                             <div class="col-sm-12 grid-margin stretch-card">

@@ -2,10 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Barangmasuk extends CI_Controller {
-    // public $result = [
-    //     'status' => false,
-    //     'data' => [],
-    // ];
 
     public function __construct()
     {
@@ -32,14 +28,11 @@ class Barangmasuk extends CI_Controller {
         $this->form_validation->set_rules('jumlah_masuk', 'Jumlah Masuk', 'required|trim|numeric|greater_than[0]');
     }
     
-    
     public function tambah()
     {
         $barang = $this->Barangmasuk_m->get('barang');
-        $data['title'] = 'Tambah Barang Masuk | Bahan Diseminasi';
-        // $data['barang_id'] = $this->Barangmasuk_m->getList();
-        // $data['barang'] = $this->Barangmasuk_m->get('barang');
         $data['barang'] = $barang;
+        $data['title'] = 'Tambah Barang Masuk | Bahan Diseminasi';
         $this->form_validation->set_rules('tanggal_masuk', 'Tanggal', 'required');
         $this->form_validation->set_rules('barang_id', 'barang', 'required');
         $this->form_validation->set_rules('jumlah_masuk', 'jumlah masuk', 'required');
@@ -85,7 +78,7 @@ class Barangmasuk extends CI_Controller {
          
                 $this->load->library('upload',$config); 
                 $this->upload->initialize($config);
-                // $id_barangmasuk = $this->Barangmasuk_m->idsm();
+               
                 if($this->upload->do_upload('file')){
                     $uploadData = $this->upload->data();
                     $filename = $uploadData['file_name'];
@@ -104,14 +97,9 @@ class Barangmasuk extends CI_Controller {
                 'barang_id' => $this->input->post('barang_id'),
                 'jumlah_masuk' => $this->input->post('jumlah_masuk'),
                 'foto' => $foto,
-                // 'dokumen' => $dokumen,
                 'keterangan' => $this->input->post('keterangan')
             ];
-            // echo '<br>';
-            // var_dump($jumlahData, $data);
             $this->Barangmasuk_m->input_data($databm, 'barang_masuk');
-            // $input = $this->input->post(null, true);
-            // $insert = $this->Barangmasuk_m->insert('barang_masuk', $input);
             $this->session->set_flashdata('sukses', 'Data Barang Masuk Berhasil Ditambahkan');
             redirect('barangmasuk');
         }
@@ -123,9 +111,8 @@ class Barangmasuk extends CI_Controller {
         $data['detail'] = $this->Barangmasuk_m->getDetail($id_barangmasuk);
         $data['barang'] = $this->Barangmasuk_m->get('barang');
         $data['barangmasuk'] = $this->Barangmasuk_m->get('barang_masuk', ['id_barangmasuk' => $id_barangmasuk]);
-        // var_dump($data['barangmasuk']);
+
         $data['title'] = 'Edit Data Barang Masuk | Bahan Diseminasi';
-        // $data['jenis'] = $this->Databarang_m->get('jenis');
         $this->load->view('template/template', $data);
         $this->load->view('Transaksi/Barangmasuk/v_editbarangmasuk', $data);
         $this->load->view('template/footer', $data);
@@ -137,8 +124,7 @@ class Barangmasuk extends CI_Controller {
         $ket = ['id_barangmasuk' => $id_barangmasuk];
         $ket2 = ['id_transaksi' => $id_barangmasuk];
         $detail = $this->Barangmasuk_m->detailupdate('barang_masuk', $ket);
-        // // var_dump($detail);
-        $this->Barangmasuk_m->hapus_data($ket2, 'detail_dokumen');
+        
         $foto = $_FILES['foto']['name'];
         if ($foto) {
             $config['upload_path']   = './assets/file/Barangmasuk';
@@ -160,49 +146,47 @@ class Barangmasuk extends CI_Controller {
         $data = [];
         $count = count($_FILES['files']['name']);
         $id_barangmasuk = $this->Barangmasuk_m->idsm();
+
+        if(!empty($_FILES['files']['name'][0])){
+            $this->Barangmasuk_m->hapus_data($ket2, 'detail_dokumen');
         
-        for($i=0;$i<$count;$i++){
-            if(!empty($_FILES['files']['name'][$i])){
+            for($i=0;$i<$count;$i++){
+                if(!empty($_FILES['files']['name'][$i])){
+            
+                $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
         
-            $_FILES['file']['name'] = $_FILES['files']['name'][$i];
-            $_FILES['file']['type'] = $_FILES['files']['type'][$i];
-            $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
-            $_FILES['file']['error'] = $_FILES['files']['error'][$i];
-            $_FILES['file']['size'] = $_FILES['files']['size'][$i];
-    
-            $config['upload_path'] = './assets/file/Barangmasuk';
-            $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
-            $config['max_size'] = '5000';
-            $config['file_name'] = $_FILES['files']['name'][$i];
-        
-            $this->load->library('upload',$config); 
-            $this->upload->initialize($config);
-            // $id_barangmasuk = $this->Barangmasuk_m->idsm();
-            if($this->upload->do_upload('file')){
-                $uploadData = $this->upload->data();
-                $filename = $uploadData['file_name'];
-                $data1[$i] = [
-                        'id_transaksi' =>$detail->id_barangmasuk,
-                        'nama_dokumen' => $filename,
-                    ];
-                $this->Barangmasuk_m->input_data($data1[$i], 'detail_dokumen');
-            } 
-            // else {
-            //     $files = $detail->file;
-            // }
+                $config['upload_path'] = './assets/file/Barangmasuk';
+                $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
+                $config['max_size'] = '5000';
+                $config['file_name'] = $_FILES['files']['name'][$i];
+            
+                $this->load->library('upload',$config); 
+                $this->upload->initialize($config);
+                
+                if($this->upload->do_upload('file')){
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+                    $data1[$i] = [
+                            'id_transaksi' =>$detail->id_barangmasuk,
+                            'nama_dokumen' => $filename,
+                        ];
+                    $this->Barangmasuk_m->input_data($data1[$i], 'detail_dokumen');
+                } 
+                }
             }
         }
         
         $databm = [
-            // 'id_barangmasuk' => $id_barangmasuk,
             'tanggal_masuk' => $this->input->post('tanggal_masuk'),
             'barang_id' => $detail->barang_id,
             'jumlah_masuk' => $this->input->post('jumlah_masuk'),
             'keterangan' => $this->input->post('keterangan'),
             'foto' => $foto,
-            // 'dokumen' => $dokumen
         ];
-        // var_dump($detail->barang_id);
         $this->Barangmasuk_m->update('barang_masuk', $databm, $ket);
         $this->session->set_flashdata('sukses', 'Data Barang Masuk Berhasil Diubah');
         redirect('barangmasuk');
@@ -221,7 +205,7 @@ class Barangmasuk extends CI_Controller {
         $data['detailbarang'] = $detailbarang;
         $ket = ['id_transaksi' => $id_barangmasuk];
         $data['dok'] = $this->Barangmasuk_m->get2('detail_dokumen', $ket);
-        // var_dump($dok);
+        
         $this->load->view('template/template', $data);
         $this->load->view('Transaksi/Barangmasuk/v_detailbarangmasuk', $data);
         $this->load->view('template/footer', $data);

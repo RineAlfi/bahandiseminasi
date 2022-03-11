@@ -19,7 +19,6 @@
                                             <input type="text" name="nama_satuan" class="form-control" value="<?php echo $j->nama_satuan ?>" name="nama_satuan" required>
                                         </div>
                                         <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
-                                        <!-- <button type="reset" class="btn btn-secondary">Reset</a></button>&nbsp &nbsp -->
                                         <a href="<?php echo base_url() ?>satuan" class="btn btn-warning" >Kembali</a>
                                     </form>
                                 <?php } ?>

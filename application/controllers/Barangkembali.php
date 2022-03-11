@@ -15,7 +15,7 @@ class Barangkembali extends CI_Controller {
     {
         $data['title'] = "Barang kembali | Bahan Diseminasi";
         $data['keluarkembali'] = $this->Barangkembali_m->join2inner();
-        // $data['keluar'] = $this->Barangkembali_m->join2inner();
+       
         $this->load->view('template/template', $data);
 		$this->load->view('Transaksi/barangkembali/v_barangkembali', $data);
         $this->load->view('template/footer', $data);
@@ -31,7 +31,6 @@ class Barangkembali extends CI_Controller {
         $barang = $this->Barangkembali_m->join2('barang_keluar', 'barang', $ket1, $ket2, $id_barangkeluar);
         $stokbarang = $barang->jumlah_keluar;
         $stok_valid = $stokbarang + 1;
-        // $data['jumlahkk'] = $this->Barangkembali_m->sum('barang_kembali', 'jumlah_kembali', $id_barangkeluar);
         
         $this->form_validation->set_rules('tanggal_kembali', 'Tanggal', 'required');
         $this->form_validation->set_rules('jumlah_kembali', 'Jumlah Kembali', 'required');
@@ -109,9 +108,7 @@ class Barangkembali extends CI_Controller {
                     'jumlah_kembali' => $this->input->post('jumlah_kembali'),
                     'keterangankembali' => $this->input->post('keterangankembali'),
                     'fotokembali' => $foto,
-                    // 'dokumenkembali' => $dokumen
                 ];
-                // var_dump($databkm);
                 $this->db->insert('barang_kembali', $databkm);
                 $barang_id = $barang->barang_id;
                 $where2 = ['id_barang' => $barang_id];
@@ -144,7 +141,7 @@ class Barangkembali extends CI_Controller {
         $ket = 'barang_kembali.id_barangkembali';
         $detaildata = $this->Barangkembali_m->join2innerdetail($ket, $id_barangkembali);
         $data['barangkembali'] = $detaildata;
-        // var_dump($data['barangkembali']);
+        
         $data['title'] = 'Edit Data Barang kembali | Bahan Diseminasi';
         $this->load->view('template/template', $data);
         $this->load->view('Transaksi/Barangkembali/v_editbarangkembali', $data);
@@ -157,7 +154,7 @@ class Barangkembali extends CI_Controller {
         $ket = ['id_barangkembali' => $id_barangkembali];
         $detail = $this->Barangkembali_m->detailupdate('barang_kembali', $ket);
         $ket2 = ['id_transaksi' => $id_barangkembali];
-        $this->Barangkembali_m->hapus_data($ket2, 'detail_dokumen');
+        
         $foto = $_FILES['fotokembali']['name'];
             if ($foto) {
                 $config['upload_path']   = './assets/file/Barangkembali';
@@ -179,34 +176,38 @@ class Barangkembali extends CI_Controller {
             $data = [];
             $count = count($_FILES['files']['name']);
             $id_barangkembali = $this->Barangkembali_m->idbkm();
+
+            if(!empty($_FILES['files']['name'][0])){
+                $this->Barangkembali_m->hapus_data($ket2, 'detail_dokumen');
           
-            for($i=0;$i<$count;$i++){
-              if(!empty($_FILES['files']['name'][$i])){
-          
-                $_FILES['file']['name'] = $_FILES['files']['name'][$i];
-                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
-                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
-                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
-                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
-        
-                $config['upload_path'] = './assets/file/Barangkembali';
-                $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
-                $config['max_size'] = '5000';
-                $config['file_name'] = $_FILES['files']['name'][$i];
-         
-                $this->load->library('upload',$config); 
-                $this->upload->initialize($config);
-                // $id_barangkembali = $this->Barangkembali_m->idbkm();
-                if($this->upload->do_upload('file')){
-                    $uploadData = $this->upload->data();
-                    $filename = $uploadData['file_name'];
-                    $data1[$i] = [
-                            'id_transaksi' => $detail->id_barangkembali,
-                            'nama_dokumen' => $filename,
-                        ];
-                    $this->Barangkembali_m->input_data($data1[$i], 'detail_dokumen');
+                for($i=0;$i<$count;$i++){
+                    if(!empty($_FILES['files']['name'][$i])){
+            
+                    $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                    $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                    $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                    $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                    $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+            
+                    $config['upload_path'] = './assets/file/Barangkembali';
+                    $config['allowed_types'] = 'jepg|jpg|png|pdf|docx|zip';
+                    $config['max_size'] = '5000';
+                    $config['file_name'] = $_FILES['files']['name'][$i];
+            
+                    $this->load->library('upload',$config); 
+                    $this->upload->initialize($config);
+                   
+                    if($this->upload->do_upload('file')){
+                        $uploadData = $this->upload->data();
+                        $filename = $uploadData['file_name'];
+                        $data1[$i] = [
+                                'id_transaksi' => $detail->id_barangkembali,
+                                'nama_dokumen' => $filename,
+                            ];
+                        $this->Barangkembali_m->input_data($data1[$i], 'detail_dokumen');
+                    }
+                    }
                 }
-              }
             } 
 
         $databkm = [
@@ -215,7 +216,6 @@ class Barangkembali extends CI_Controller {
             'jumlah_kembali' => $this->input->post('jumlah_kembali'),
             'keterangankembali' => $this->input->post('keterangankembali'),
             'fotokembali' => $foto,
-            // 'dokumenkembali' => $dokumen
         ];
         $data['barangkembali'] = $this->Barangkembali_m->get('barang_kembali', ['id_barangkembali' => $id_barangkembali]);
         $id_barangkeluar = $data['barangkembali']['barang_idkeluar'];
@@ -226,12 +226,10 @@ class Barangkembali extends CI_Controller {
         $barang_id = $barang->barang_id;
             $where2 = ['id_barang' => $barang_id];
             $stokskg = $barang->stok;
-            // $jumlahlama = $this->Barangkembali_m->get('barang_kembali', ['jumlah_kembali' => $jumlah_kembali]);
             $jumlahkembali = $this->input->post('jumlah_kembali');
             $data2 = [
                 'stok' => (int) $stokskg - $data['barangkembali']['jumlah_kembali'] + $jumlahkembali
             ];
-        // var_dump($data2);
         $this->Barangkembali_m->update_data_stok($where2, $data2, 'barang'); 
         $this->Barangkembali_m->update('barang_kembali', $databkm, $ket);
         $this->session->set_flashdata('sukses', 'Data Barang kembali Berhasil Diubah');
@@ -253,7 +251,6 @@ class Barangkembali extends CI_Controller {
         $ket = ['id_transaksi' => $id_barangkembali];
         $data['dok'] = $this->Barangkembali_m->get2('detail_dokumen', $ket);
 
-        // var_dump($data['detaildata']);
         $this->load->view('template/template', $data);
         $this->load->view('Transaksi/Barangkembali/v_detailbarangkembali', $data);
         $this->load->view('template/footer', $data);

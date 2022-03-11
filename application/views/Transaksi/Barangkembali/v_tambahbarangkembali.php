@@ -57,12 +57,10 @@
                     <div class="form-group">
                         <label><b>Dokumen</b></label>
                         <input type='file' class="form-control form-control-lg" id='files' name='files[]' multiple="">
-                        <!-- <input type="file" class="form-control form-control-lg" id="dokumenkembali" name="dokumenkembali" multiple> -->
                         <?php echo form_error('dokumen', '<small class="text-danger">', '</small>'); ?>
                     </div>
 
                     <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
-                    <!-- <button type="reset" class="btn btn-secondary">Reset</a></button>&nbsp &nbsp -->
                     <a href="<?php echo base_url() ?>barangkeluar" class="btn btn-warning" >Kembali</a>
                     <?php echo form_close(); ?>  
                 </div>

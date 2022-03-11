@@ -25,7 +25,6 @@ class Laporan extends CI_Controller
 
         } else {
             $input = $this->input->post(null, true);
-            // $table = $input['transaksi'];
             $tanggal = $input['tanggal'];
             $pecah = explode(' - ', $tanggal);
             $mulai = date('Y-m-d', strtotime($pecah[0]));
@@ -43,15 +42,11 @@ class Laporan extends CI_Controller
                 $this->data['title_pdf'] = 'Laporan Transaksi Barang Keluar';
                 $file_pdf = 'laporan_transaksi_barang_keluar';
                 $html=$this->load->view('pdf/v_laporan_barangkeluar', $this->data, true);
-                // $detailkeluar = $this->Laporan_m->getBarangKeluar();
-                // $data['detailkeluar'] = $detailkeluar;
             } else {
                 $this->data['query'] = $this->Laporan_m->getBarangKembali(null, null, ['mulai' => $mulai, 'akhir' => $akhir]);
                 $this->data['title_pdf'] = 'Laporan Transaksi Barang Kembali';
                 $file_pdf = 'laporan_transaksi_barang_kembali';
                 $html=$this->load->view('pdf/v_laporan_barangkembali', $this->data, true);
-                // $detailkembali = $this->Laporan_m->getBarangKembali();
-                // $data['detailkembali'] = $detailkembali;
             }
 
             //panggil library yang kita buat sebelumnya yang bernama pdfgenerator

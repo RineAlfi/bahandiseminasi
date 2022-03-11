@@ -51,19 +51,10 @@ class Databarang extends CI_Controller {
                 redirect('data_barang/v_tambahdatabarang');
             }
         }
-		//$data['title'] = 'Tambah Data Barang | Bahan Diseminasi';
-        //$id_jenis = $this->input->post('id', TRUE);
-        //$data['jenis'] = $this->Databarang_m->get_nama_jenis($id_jenis);
-        //$id = $this->input->post('id', TRUE);
-        // $data['satuan'] = $this->Databarang_m->get_nama_satuan($id);
-        // $this->load->view('template/template',$data);
-		// $this->load->view('DataMaster/data_barang/v_tambahdatabarang',$data);
-        // $this->load->view('template/footer',$data);
     }
 
     public function edit($id)
     {
-        // $id = encode_php_tags($getId);
         $this->_validasi();
 
         if ($this->form_validation->run() == false) {
@@ -98,7 +89,7 @@ class Databarang extends CI_Controller {
 		redirect('databarang');
 	}
 
-    function get_barang()
+    public function get_barang()
     {
         $barang_id=$this->input->post('barang_id');
         $data=$this->Databarang_m->get_data_barang_bybarangid($barang_id);

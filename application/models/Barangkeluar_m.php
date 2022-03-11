@@ -26,7 +26,7 @@ class Barangkeluar_m extends CI_model
 		return $this->db->where('id_barangkeluar', $id)->get('barang_keluar')->row();
 	}
 
-    function input_data($data, $table)
+    public function input_data($data, $table)
 	{
 		$this->db->insert($table, $data);
 	}
@@ -46,7 +46,7 @@ class Barangkeluar_m extends CI_model
         return $query->row();
 	}
 
-    function join3($table, $table2, $table3, $ktabel21, $ktable31, $ket, $param)
+    public function join3($table, $table2, $table3, $ktabel21, $ktable31, $ket, $param)
     {
 
         $this->db->select('*');
@@ -85,7 +85,7 @@ class Barangkeluar_m extends CI_model
         return $this->db->get('barang_keluar bk')->result_array();
     }
 
-    function join2($table, $table2, $ktabel21, $ket, $param)
+    public function join2($table, $table2, $ktabel21, $ket, $param)
     {
         $this->db->select('*');
         $this->db->from($table);

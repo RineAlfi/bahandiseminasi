@@ -6,7 +6,7 @@ class Masuk_m extends CI_model
         return $this->db->get($table)->result();
     }
 
-    function insert_data($data, $table)
+    public function insert_data($data, $table)
     {
         $this->db->insert($table, $data);
     }

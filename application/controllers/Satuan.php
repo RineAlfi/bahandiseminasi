@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Satuan extends CI_Controller {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         cekmasuk();
@@ -10,7 +10,7 @@ class Satuan extends CI_Controller {
         $this->load->Model('Satuan_m');
     }
     
-    function index()
+    public function index()
     {
         $data['satuan'] = $this->Satuan_m->tampil_data('satuan')->result();
         $data['title'] = "Satuan Barang | Bahan Diseminasi";
@@ -19,7 +19,7 @@ class Satuan extends CI_Controller {
         $this->load->view('template/footer',$data);
     }
 
-    function tambah()
+    public function tambah()
 	{
         $this->form_validation->set_rules('nama_satuan', 'Nama Satuan', 'required|trim');
 		$data['title'] = 'Tambah Satuan Barang | Bahan Diseminasi';
@@ -28,7 +28,7 @@ class Satuan extends CI_Controller {
         $this->load->view('template/footer',$data);
     }
 
-    function tambah_aksi()
+    public function tambah_aksi()
     {
         $satuan = $this->input->post('nama_satuan');
         $data = array(
@@ -39,7 +39,7 @@ class Satuan extends CI_Controller {
         redirect('satuan');
     }
 
-    function edit($id)
+    public function edit($id)
     {
         $where = array('id' => $id);
         $data['satuan'] = $this->db->query("SELECT * FROM satuan WHERE id='$id'")->result();
@@ -49,7 +49,7 @@ class Satuan extends CI_Controller {
         $this->load->view('template/footer',$data);
     }
 
-    function update()
+    public function update()
     {
         $id = $this->input->post('id');
         $data['satuan'] = $this->db->query("SELECT * FROM satuan WHERE id='$id'")->result();
@@ -66,7 +66,7 @@ class Satuan extends CI_Controller {
         redirect('satuan');
     }
     
-    function hapus($id)
+    public function hapus($id)
 	{
 		$where = array('id' => $id);
 		$this->Satuan_m->hapus_data($where, 'satuan');

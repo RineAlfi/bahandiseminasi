@@ -26,7 +26,7 @@ class Barangkembali_m extends CI_model
         return $this->db->get_where($table, $ket)->result();
     }
 
-    function input_data($data, $table)
+    public function input_data($data, $table)
 	{
 		$this->db->insert($table, $data);
 	}
@@ -46,7 +46,7 @@ class Barangkembali_m extends CI_model
         return $query->row();
 	}
 
-    function join3($table, $table2, $table3, $ktabel21, $ktable31, $ket, $param)
+    public function join3($table, $table2, $table3, $ktabel21, $ktable31, $ket, $param)
     {
         $this->db->select('*');
         $this->db->from($table);
@@ -65,7 +65,7 @@ class Barangkembali_m extends CI_model
         return $this->db->get('barang b')->result_array(); 
     }
 
-    function join2($table, $table2, $ktabel21, $ket, $param)
+    public function join2($table, $table2, $ktabel21, $ket, $param)
     {
 
         $this->db->select('*');
@@ -76,18 +76,17 @@ class Barangkembali_m extends CI_model
         return $query->row();
     }
     
-    function join2inner()
+    public function join2inner()
     {
         $this->db->select('*');
         $this->db->from('barang_kembali');
         $this->db->join('barang_keluar', 'barang_keluar.id_barangkeluar = barang_kembali.barang_idkeluar', 'inner');
         $this->db->order_by('id_barangkembali', 'DESC');
-        // $this->db->where($ket, $param);
         $query = $this->db->get();
         return $query->result();
     }
 
-    function join2innerdetail($ket, $param)
+    public function join2innerdetail($ket, $param)
     {
         $this->db->select('*');
         $this->db->from('barang_kembali');
@@ -143,72 +142,5 @@ class Barangkembali_m extends CI_model
         $id_barangkembali = "BKM" .date('ym') . $no;
         return $id_barangkembali;
     }
-
-     // function get_all_data()
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('barang_kembali');
-    //     $this->db->join('barang_keluar', 'barang_keluar.id_barangkeluar = barang_kembali.barang_idkeluar', 'inner');
-    //     $query = $this->db->get();
-    //     return $query->result_array();
-    // }
-
-    // function join3wt($table, $table2, $table3, $ktabel21, $ktable31)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from($table);
-    //     $this->db->join($table2, $ktabel21, 'left');
-    //     $this->db->join($table3, $ktable31, 'left');
-    //     // $this->db->where($ket, $param);
-    //     $query = $this->db->get();
-    //     return $query->result_array();
-    // }
-
-    // function joinbwt($barang_id)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('barang');
-    //     $this->db->join('jenis', 'jenis.id_jenis = barang.jenis_id', 'inner');
-    //     $this->db->join('satuan', 'satuan.id = barang.satuan_id', 'inner');
-    //     $query = $this->db->get();
-    //     return $query->result_array();
-    // }
-
-    // function join2wt($table, $table2, $ktabel21)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from($table);
-    //     $this->db->join($table2, $ktabel21, 'inner');
-    //     $query = $this->db->get();
-    //     return $query->result();
-    // }
-
-    // function join3($table, $table2, $table3, $ktabel21, $ktable31, $ket, $param)
-    // {
-
-    //     $this->db->select('*');
-    //     $this->db->from($table);
-    //     $this->db->join($table2, $ktabel21, 'left');
-    //     $this->db->join($table3, $ktable31, 'left');
-    //     $this->db->where($ket, $param);
-    //     $query = $this->db->get();
-    //     return $query->row();
-    // }
-    
-    // public function count()
-    // {
-    //     $this->db->select('count(*)');
-    //     $this->db->from('barang_keluar');
-    //     $this->db->where('id_barangkeluar', '3');
-    //     $query = $this->db->get();
-    //     echo $query->num_rows();
-    // }
-
-    // function counterItem(){
-    //     $this->db->select_sum('jumlah_kembali');
-    //     $this->db->where('barang_idkeluar', '5');
-    //     $t= $this->db->get('barang_kembali')->row();
-    //     return $t->jumlah_kembali;
-    // }
 
 }

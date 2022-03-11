@@ -112,13 +112,6 @@
         });
 </script>
 
-<!-- <script type="text/javascript" charset="utf8" src="</?php echo base_url() ?>assets/js/DataTables/datatables.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#datatable').DataTable();
-    });
-</script> -->
-
 </body>
 
 </html> -->

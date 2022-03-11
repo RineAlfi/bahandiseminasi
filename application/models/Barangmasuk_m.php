@@ -62,15 +62,6 @@ class Barangmasuk_m extends CI_model
         return $query->row();
     }
 
-	// public function getBarang()
-    // {
-    //     $this->db->join('jenis j', 'b.jenis_id = j.id_jenis');
-    //     $this->db->join('satuan s', 'b.satuan_id = s.id');
-    //     $this->db->order_by('id_barang');
-    //     $this->db->where('id_barang')
-    //     return $this->db->get('barang b')->result_array();
-    // }
-
 	public function getBarangMasuk($limit = null, $id_barang = null, $range = null)
     {
         $this->db->select('*');

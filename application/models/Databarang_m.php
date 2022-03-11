@@ -45,7 +45,6 @@ class Databarang_m extends CI_model
         $this->db->from('barang');
         $this->db->join('barang_masuk', 'barang_masuk.barang_id = barang.id_barang');
         $this->db->join('satuan', 'satuan.id = barang.satuan_id');
-        // $this->db->join('barang_masuk', 'barang_masuk.barang_id = barang.id_barang');
         return $hsl=$this->db->where('barang_id', $barang_id)->get()->row();
         if($hsl->num_rows()>0){
         foreach ($hsl->result() as $data) {

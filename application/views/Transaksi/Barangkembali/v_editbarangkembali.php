@@ -50,12 +50,10 @@
                     <div class="form-group">
                         <label><b>Dokumen</b></label>
                         <input type='file' class="form-control form-control-lg" id='files' name='files[]' multiple="">
-                        <!-- <input type="file" name="dokumenkembali" value="</?php echo set_value('dokumen', $barangkembali->dokumenkembali); ?>" name="dokumenkembali" class="form-control"> -->
                         <?php echo form_error('dokumenkembali', '<small class="text-danger">', '</small>')?>
                     </div>
 
                     <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
-                    <!-- <button type="reset" class="btn btn-secondary">Reset</a></button>&nbsp &nbsp -->
                     <a href="<?php echo base_url() ?>barangkembali" class="btn btn-warning" >Kembali</a>
                     <?php echo form_close(); ?>  
                 </div>

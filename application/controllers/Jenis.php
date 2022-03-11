@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Jenis extends CI_Controller {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         cekmasuk();
@@ -10,7 +10,7 @@ class Jenis extends CI_Controller {
         $this->load->Model('Jenis_m');
     }
 
-    function index()
+    public function index()
     {
         $data['jenis'] = $this->Jenis_m->tampil_data('jenis')->result();
         $data['title'] = "Jenis Barang | Bahan Diseminasi";
@@ -24,7 +24,7 @@ class Jenis extends CI_Controller {
         $this->form_validation->set_rules('nama_jenis', 'Nama Jenis', 'required|trim');
     }
 
-    function tambah()
+    public function tambah()
 	{
         $this-> _validasi();
 		$data['title'] = 'Tambah Jenis Barang | Bahan Diseminasi';
@@ -33,7 +33,7 @@ class Jenis extends CI_Controller {
         $this->load->view('template/footer',$data);
     }
 
-    function tambah_aksi()
+    public function tambah_aksi()
     {
         $jenis = $this->input->post('nama_jenis');
         $data = array(
@@ -44,7 +44,7 @@ class Jenis extends CI_Controller {
         redirect('jenis');
     }
 
-    function edit($id_jenis)
+    public function edit($id_jenis)
     {
         $where = array('id_jenis' => $id_jenis);
         $data['jenis'] = $this->db->query("SELECT * FROM jenis WHERE id_jenis='$id_jenis'")->result();
@@ -54,7 +54,7 @@ class Jenis extends CI_Controller {
         $this->load->view('template/footer',$data);
     }
 
-    function update()
+    public function update()
     {
         $id_jenis = $this->input->post('id');
         $data['jenis'] = $this->db->query("SELECT * FROM jenis WHERE id_jenis='$id_jenis'")->result();
@@ -71,7 +71,7 @@ class Jenis extends CI_Controller {
         redirect('jenis');
     }
 
-    function hapus($id_jenis)
+    public function hapus($id_jenis)
 	{
 		$where = array('id_jenis' => $id_jenis);
 		$this->Jenis_m->hapus_data($where, 'jenis');

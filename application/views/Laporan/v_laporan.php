@@ -35,24 +35,6 @@
                                         Barang Kembali
                                         </label>
                                     </div>
-                                    <!-- <div class="form-check">
-                                        <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input">
-                                        Barang Masuk
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input">
-                                        Barang Keluar
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input">
-                                        Barang Kembali
-                                        </label>
-                                    </div> -->
                                     <div class="form-group"><br>
                                     <label><b>Tanggal</b></label>
                                         <div class="input-group">
@@ -61,9 +43,6 @@
                                                 <span class="input-group-text"><i class="ti ti-calendar"></i></span>
                                             </div>
                                         </div>
-                                        <!-- <input value="</?= set_value('tanggal'); ?>" name="tanggal" id="tanggal" type="text" class="form-control" placeholder="Periode Tanggal"> -->
-                                        <!-- <input value="</?= set_value('tanggal'); ?>" name="tanggal" id="tanggal_laporan" type="date" name="tanggal_keluar" class="form-control"> -->
-                                        <!-- ?php echo form_error('tanggal_keluar', '<div class="text-small text-danger"></div>') ?> -->
                                     </div>
                                     <button type="submit" class="btn btn-outline-primary btn-icon-text">
                                         Cetak

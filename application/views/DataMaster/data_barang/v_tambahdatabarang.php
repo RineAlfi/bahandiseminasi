@@ -34,7 +34,6 @@
                         <?php echo form_error('satuan_id', '<small class="text-danger">', '</small>')?>
                     </div>
                     <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
-                    <!-- <button type="reset" class="btn btn-secondary">Reset</a></button>&nbsp &nbsp -->
                     <a href="<?php echo base_url() ?>databarang" class="btn btn-warning" >Kembali</a> 
                 </form>
             </div>

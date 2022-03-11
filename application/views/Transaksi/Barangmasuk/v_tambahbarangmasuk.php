@@ -43,12 +43,6 @@
                                     <?php echo form_error('jumlah_masuk', '<small class="text-danger">', '</small>'); ?>
                                 </div>
                             </div>
-                            <!-- <div class="form-group">
-                                <label><b>Satuan</b></label>
-                                <div class="col-md-15">
-                                    <input readonly="readonly" id="satuan" name="satuan" type="number" class="form-control">
-                                </div>
-                            </div> -->
                             <div class="form-group">
                             <label><b>Keterangan</b></label>
                                 <input type="text" name="keterangan" id="keterangan" class="form-control">
@@ -62,11 +56,9 @@
                             <div class="form-group">
                                 <label><b>Dokumen</b></label>
                                 <input type='file' class="form-control form-control-lg" id='files' name='files[]' multiple="">
-                                <!-- <input type="file" class="form-control form-control-lg" id="dokumen" name="dokumen[]" multiple> -->
                                 <?php echo form_error('dokumen', '<small class="text-danger">', '</small>'); ?>
                             </div>
                             <button type="submit" class="btn btn-success">Simpan</a></button>&nbsp &nbsp
-                            <!-- <button type="reset" class="btn btn-secondary">Reset</a></button>&nbsp &nbsp -->
                             <a href="<?php echo base_url() ?>barangmasuk" class="btn btn-warning" >Kembali</a>
                             <?= form_close(); ?>
                         </div>

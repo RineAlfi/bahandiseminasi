@@ -16,7 +16,6 @@ class Masuk extends CI_Controller
                 redirect('satuan');
             }
         
-
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Kata Sandi', 'required');
         if ($this->form_validation->run() == false) { //kl form validasi gagal
@@ -39,13 +38,11 @@ class Masuk extends CI_Controller
                     'email' => $user['email'],
                     'jenis' => 'pegawai'
                 ];
-                // var_dump($data);
                 $this->session->set_userdata($data);
                 redirect('satuan');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Kata Sandi Salah!</div>');
-                // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">  Kata Sandi Salah! </div>');
                 redirect('masuk');
             }
         } else {
@@ -58,16 +55,9 @@ class Masuk extends CI_Controller
     public function keluar()
     {
         $this->session->unset_userdata('email');
-        // $this->session->unset_userdata('jenis');
-
-
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Berhasil keluar!</div>');
         redirect('masuk');
     }
 
-    public function blok()
-    {
-        echo "blok";
-    }
 }

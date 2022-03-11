@@ -69,7 +69,7 @@ class Barangkeluar extends CI_Controller {
          
                 $this->load->library('upload',$config); 
                 $this->upload->initialize($config);
-                // $id_barangkeluar = $this->Barangkeluar_m->idbk();
+               
                 if($this->upload->do_upload('file')){
                     $uploadData = $this->upload->data();
                     $filename = $uploadData['file_name'];
@@ -88,10 +88,8 @@ class Barangkeluar extends CI_Controller {
                 'barang_id' => $this->input->post('barang_id'),
                 'jumlah_keluar' => $this->input->post('jumlah_keluar'),
                 'foto' => $foto,
-                // 'dokumen' => $dokumen,
                 'keterangan' => $this->input->post('keterangan')
             ];
-            // var_dump($data);
             $this->Barangkeluar_m->input_data($databk, 'barang_keluar');
             $this->session->set_flashdata('sukses', 'Data Barang Keluar Berhasil Ditambahkan');
             redirect('barangkeluar');
@@ -110,7 +108,6 @@ class Barangkeluar extends CI_Controller {
         $data['detailbarang'] = $detailbarang;
         $stokbarang = $detailbarang->stok;
         $stok_valid = $stokbarang + 1;
-        // var_dump($stokbarang);
         
         $this->form_validation->set_rules('tanggal_keluar', 'Tanggal Keluar', 'required|trim');
         $this->form_validation->set_rules('barang_id', 'Barang', 'required');
@@ -166,9 +163,10 @@ class Barangkeluar extends CI_Controller {
         $data = [];
         $count = count($_FILES['files']['name']);
         $id_barangkeluar = $this->Barangkeluar_m->idbk();
-        if($count > 0){
+        
+        if(!empty($_FILES['files']['name'][0])){
             $this->Barangkeluar_m->hapus_data($ket2, 'detail_dokumen');
-
+           
             for($i=0;$i<$count;$i++){
                 if(!empty($_FILES['files']['name'][$i])){
             
@@ -219,10 +217,9 @@ class Barangkeluar extends CI_Controller {
             'jumlah_keluar' => $this->input->post('jumlah_keluar'),
             'keterangan' => $this->input->post('keterangan'),
             'foto' => $foto,
-            // 'dokumen' => $dokumen,
             'beritaacara' => $beritaacara
         ];
-        // var_dump($data);
+        var_dump($data);
         $this->Barangkeluar_m->update('barang_keluar', $databk, $ket);
         $this->session->set_flashdata('sukses', 'Data Barang Keluar Berhasil Diubah');
         redirect('barangkeluar');
@@ -242,7 +239,6 @@ class Barangkeluar extends CI_Controller {
         $ket = ['id_transaksi' => $id_barangkeluar];
         $data['dok'] = $this->Barangkeluar_m->get2('detail_dokumen', $ket);
 
-        // var_dump($data['detailbarang']) ;
         $this->load->view('template/template', $data);
         $this->load->view('Transaksi/Barangkeluar/v_detailbarangkeluar', $data);
         $this->load->view('template/footer', $data);
@@ -259,8 +255,7 @@ class Barangkeluar extends CI_Controller {
     public function pdf($id_barangkeluar)
     {
 
-        //Ambil Data Barang Keluar
-        // $data['id_barangkeluar'] = $data['id_barangkeluar']
+        // Ambil Data Barang Keluar
         $detail = $this->Barangkeluar_m->detail_data($id_barangkeluar);
         $this->data['detail'] = $detail;
         $barang_id = $detail->barang_id;
@@ -269,7 +264,6 @@ class Barangkeluar extends CI_Controller {
         $ket3 = 'barang.id_barang';
         $detailbarang = $this->Barangkeluar_m->join3('barang', 'jenis', 'satuan', $ket1, $ket2, $ket3, $barang_id);
         $this->data['detailbarang'] = $detailbarang;
-        // var_dump($data['detail']);
 
         // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
         $this->load->library('pdfgenerator');
@@ -279,8 +273,10 @@ class Barangkeluar extends CI_Controller {
         
         // filename dari pdf ketika didownload
         $file_pdf = 'berita_acara_barang_diseminasi';
+
         // setting paper
         $paper = 'A4';
+
         //orientasi paper potrait / landscape
         $orientation = "portrait";
         
@@ -288,7 +284,6 @@ class Barangkeluar extends CI_Controller {
         
         // run dompdf
         $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
-
     }
 
 }
